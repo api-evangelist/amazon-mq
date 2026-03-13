@@ -1,0 +1,7 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: Amazon MQ API Schema
+description: >-
+  JSON Schema for the Amazon MQ API, providing managed message broker
+  capabilities for Apache ActiveMQ and RabbitMQ.
+type: object
+properties: {}
