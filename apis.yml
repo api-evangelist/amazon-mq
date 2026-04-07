@@ -1,14 +1,13 @@
 name: Amazon MQ
 description: >-
-  Amazon MQ is a managed message broker service for Apache ActiveMQ and
-  RabbitMQ that makes it easy to set up and operate message brokers on
-  AWS. Amazon MQ reduces your operational responsibilities by managing the
-  provisioning, setup, and maintenance of message brokers. Because Amazon
-  MQ connects to your current applications with industry-standard APIs and
-  protocols, you can easily migrate to AWS without having to rewrite code.
-  It is suitable for enterprise IT pros, developers, and architects who are
-  managing a message broker themselves, whether on-premises or in the cloud.
-image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+  Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that
+  makes it easy to set up and operate message brokers on AWS. Amazon MQ reduces your
+  operational responsibilities by managing the provisioning, setup, and maintenance
+  of message brokers. Because Amazon MQ connects to your current applications with
+  industry-standard APIs and protocols, you can easily migrate to AWS without having
+  to rewrite code.
+image: 
+  https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://apis.io/amazon-mq
 created: '2024-01-15'
 modified: '2026-03-16'
@@ -19,11 +18,13 @@ apis:
       The Amazon MQ API provides programmatic access to create and manage
       message brokers, configurations, users, and broker engine types for
       Apache ActiveMQ and RabbitMQ managed message broker service.
-    image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+    image: 
+      https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
     baseURL: https://mq.amazonaws.com
     properties:
       - type: documentation
-        url: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
+        url: 
+          https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
       - type: openapi
         url: openapi/openapi.yml
       - type: openapi
