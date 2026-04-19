@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-deployment-mode-structure.json",
+  "name": "DeploymentMode",
+  "type": "string",
+  "description": "The broker's deployment mode.",
+  "enum": [
+    "SINGLE_INSTANCE",
+    "ACTIVE_STANDBY_MULTI_AZ",
+    "CLUSTER_MULTI_AZ"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "Hosts": "example-value",
+  "RoleBase": "example-value",
+  "RoleName": "example-resource",
+  "RoleSearchMatching": "example-value",
+  "RoleSearchSubtree": "example-value",
+  "ServiceAccountUsername": "example-resource",
+  "UserBase": "example-value",
+  "UserRoleName": "example-resource",
+  "UserSearchMatching": "example-value",
+  "UserSearchSubtree": "example-value"
+}

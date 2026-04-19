@@ -1,0 +1,4 @@
+{
+  "KmsKeyId": "id-abc123",
+  "UseAwsOwnedKey": "example-value"
+}

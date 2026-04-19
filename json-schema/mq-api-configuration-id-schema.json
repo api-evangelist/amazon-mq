@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-configuration-id-schema.json",
+  "title": "ConfigurationId",
+  "description": "<p>A list of information about the configuration.</p> <important><p>Does not apply to RabbitMQ brokers.</p></important>",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "id"
+          },
+          "description": "Required. The unique ID that Amazon MQ generates for the configuration."
+        }
+      ]
+    },
+    "Revision": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "xml": {
+            "name": "revision"
+          },
+          "description": "The revision number of the configuration."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Id"
+  ]
+}

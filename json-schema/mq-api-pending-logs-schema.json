@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-pending-logs-schema.json",
+  "title": "PendingLogs",
+  "description": "The list of information about logs to be enabled for the specified broker.",
+  "type": "object",
+  "properties": {
+    "Audit": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "audit"
+          },
+          "description": "Enables audit logging. Every user management action made using JMX or the ActiveMQ Web Console is logged."
+        }
+      ]
+    },
+    "General": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "general"
+          },
+          "description": "Enables general logging."
+        }
+      ]
+    }
+  }
+}

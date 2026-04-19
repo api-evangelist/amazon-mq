@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-authentication-strategy-structure.json",
+  "name": "AuthenticationStrategy",
+  "type": "string",
+  "description": "Optional. The authentication strategy used to secure the broker. The default is SIMPLE.",
+  "enum": [
+    "SIMPLE",
+    "LDAP"
+  ]
+}

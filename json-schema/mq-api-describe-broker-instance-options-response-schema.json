@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-describe-broker-instance-options-response-schema.json",
+  "title": "DescribeBrokerInstanceOptionsResponse",
+  "description": "DescribeBrokerInstanceOptionsResponse schema from Amazon MQ API",
+  "type": "object",
+  "properties": {
+    "BrokerInstanceOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfBrokerInstanceOption"
+        },
+        {
+          "xml": {
+            "name": "brokerInstanceOptions"
+          },
+          "description": "List of available broker instance options."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integerMin5Max100"
+        },
+        {
+          "xml": {
+            "name": "maxResults"
+          },
+          "description": "Required. The maximum number of instance options that can be returned per page (20 by default). This value must be an integer from 5 to 100."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "nextToken"
+          },
+          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+        }
+      ]
+    }
+  }
+}

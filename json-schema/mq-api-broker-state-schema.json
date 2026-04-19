@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-broker-state-schema.json",
+  "title": "BrokerState",
+  "description": "The broker's status.",
+  "type": "string",
+  "enum": [
+    "CREATION_IN_PROGRESS",
+    "CREATION_FAILED",
+    "DELETION_IN_PROGRESS",
+    "RUNNING",
+    "REBOOT_IN_PROGRESS",
+    "CRITICAL_ACTION_REQUIRED"
+  ]
+}

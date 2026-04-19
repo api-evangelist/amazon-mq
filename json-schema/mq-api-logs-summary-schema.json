@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-logs-summary-schema.json",
+  "title": "LogsSummary",
+  "description": "The list of information about logs currently enabled and pending to be deployed for the specified broker.",
+  "type": "object",
+  "properties": {
+    "Audit": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "audit"
+          },
+          "description": "Enables audit logging. Every user management action made using JMX or the ActiveMQ Web Console is logged."
+        }
+      ]
+    },
+    "AuditLogGroup": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "auditLogGroup"
+          },
+          "description": "The location of the CloudWatch Logs log group where audit logs are sent."
+        }
+      ]
+    },
+    "General": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "general"
+          },
+          "description": "Enables general logging."
+        }
+      ]
+    },
+    "GeneralLogGroup": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "generalLogGroup"
+          },
+          "description": "The location of the CloudWatch Logs log group where general logs are sent."
+        }
+      ]
+    },
+    "Pending": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PendingLogs"
+        },
+        {
+          "xml": {
+            "name": "pending"
+          },
+          "description": "The list of information about logs pending to be deployed for the specified broker."
+        }
+      ]
+    }
+  },
+  "required": [
+    "GeneralLogGroup",
+    "General"
+  ]
+}

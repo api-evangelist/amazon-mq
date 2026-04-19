@@ -1,0 +1,210 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon MQ
+  description: Unified vocabulary for Amazon MQ APIs and capabilities.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon MQ API
+    namespace: mq
+    version: '2018-11-14'
+    baseUrl: http://mq.{region}.amazonaws.com
+    status: active
+  resources:
+  - name: v1
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: brokers
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: configurations
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: tags
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: users
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: broker-engine-types
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: broker-instance-options
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: revisions
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: reboot
+    api: Amazon MQ API
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  actions:
+  - name: list
+    httpMethod: GET
+    pattern: read
+  - name: get
+    httpMethod: GET
+    pattern: read
+  - name: create
+    httpMethod: POST
+    pattern: write
+  - name: update
+    httpMethod: PUT
+    pattern: write
+  - name: delete
+    httpMethod: DELETE
+    pattern: write
+  schemas:
+    core:
+    - CreateBrokerResponse
+    - DayOfWeek
+    - User
+    - CreateConfigurationResponse
+    - CreateUserResponse
+  parameters:
+    pagination:
+    - name: nextToken
+      description: Pagination token
+    - name: maxResults
+      description: Max results per page
+  authentication:
+    schemes:
+    - type: awsSigV4
+      description: AWS Signature Version 4
+capability:
+  workflows:
+  - name: Amazon MQ Workflow
+    file: capabilities/amazon-mq-media-workflow.yaml
+    description: Amazon MQ media processing workflow
+    personas:
+    - Broadcast Engineer
+    - Media Developer
+    domains:
+    - Media Processing
+  personas:
+  - id: broadcast-engineer
+    name: Broadcast Engineer
+    description: Engineer managing broadcast media workflows
+    workflows:
+    - Amazon MQ Workflow
+  - id: media-developer
+    name: Media Developer
+    description: Developer building media processing applications
+    workflows:
+    - Amazon MQ Workflow
+  domains:
+  - name: Media Processing
+    description: AWS media processing and delivery
+  namespaces:
+  - name: mq
+    type: consumed
+  - name: mq-workflow-api
+    type: rest
+    port: 8080
+  - name: mq-workflow-mcp
+    type: mcp
+    port: 9090
+  binds:
+  - name: AWS_ACCESS_KEY_ID
+  - name: AWS_SECRET_ACCESS_KEY
+crossReference:
+- resource: v1
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: brokers
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: configurations
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: tags
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: users
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: broker-engine-types
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: broker-instance-options
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: revisions
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer
+- resource: reboot
+  api: Amazon MQ API
+  workflows:
+  - Amazon MQ Workflow
+  personas:
+  - Broadcast Engineer

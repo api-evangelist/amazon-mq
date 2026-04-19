@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-update-broker-response-structure.json",
+  "name": "UpdateBrokerResponse",
+  "type": "object",
+  "description": "UpdateBrokerResponse schema from Amazon MQ API",
+  "properties": {
+    "AuthenticationStrategy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AuthenticationStrategy"
+        },
+        {
+          "xml": {
+            "name": "authenticationStrategy"
+          },
+          "description": "Optional. The authentication strategy used to secure the broker. The default is SIMPLE."
+        }
+      ]
+    },
+    "AutoMinorVersionUpgrade": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "autoMinorVersionUpgrade"
+          },
+          "description": "The new boolean value that specifies whether broker engines automatically upgrade to new minor versions as new versions are released and supported by Amazon MQ."
+        }
+      ]
+    },
+    "BrokerId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerId"
+          },
+          "description": "Required. The unique ID that Amazon MQ generates for the broker."
+        }
+      ]
+    },
+    "Configuration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConfigurationId"
+        },
+        {
+          "xml": {
+            "name": "configuration"
+          },
+          "description": "The ID of the updated configuration."
+        }
+      ]
+    },
+    "EngineVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "engineVersion"
+          },
+          "description": "The broker engine version to upgrade to. For a list of supported engine versions, see <a href=\"https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html\">Supported engines</a>."
+        }
+      ]
+    },
+    "HostInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "hostInstanceType"
+          },
+          "description": "The broker's host instance type to upgrade to. For a list of supported instance types, see <a href=\"https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker.html#broker-instance-types\">Broker instance types</a>."
+        }
+      ]
+    },
+    "LdapServerMetadata": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LdapServerMetadataOutput"
+        },
+        {
+          "xml": {
+            "name": "ldapServerMetadata"
+          },
+          "description": "Optional. The metadata of the LDAP server used to authenticate and authorize connections to the broker. Does not apply to RabbitMQ brokers."
+        }
+      ]
+    },
+    "Logs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Logs"
+        },
+        {
+          "xml": {
+            "name": "logs"
+          },
+          "description": "The list of information about logs to be enabled for the specified broker."
+        }
+      ]
+    },
+    "MaintenanceWindowStartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WeeklyStartTime"
+        },
+        {
+          "xml": {
+            "name": "maintenanceWindowStartTime"
+          },
+          "description": "The parameters that determine the WeeklyStartTime."
+        }
+      ]
+    },
+    "SecurityGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "securityGroups"
+          },
+          "description": "The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers."
+        }
+      ]
+    }
+  }
+}

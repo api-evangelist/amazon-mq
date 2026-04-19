@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-broker-instance-option-structure.json",
+  "name": "BrokerInstanceOption",
+  "type": "object",
+  "description": "Option for host instance type.",
+  "properties": {
+    "AvailabilityZones": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfAvailabilityZone"
+        },
+        {
+          "xml": {
+            "name": "availabilityZones"
+          },
+          "description": "The list of available az."
+        }
+      ]
+    },
+    "EngineType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EngineType"
+        },
+        {
+          "xml": {
+            "name": "engineType"
+          },
+          "description": "The broker's engine type."
+        }
+      ]
+    },
+    "HostInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "hostInstanceType"
+          },
+          "description": "The broker's instance type."
+        }
+      ]
+    },
+    "StorageType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BrokerStorageType"
+        },
+        {
+          "xml": {
+            "name": "storageType"
+          },
+          "description": "The broker's storage type."
+        }
+      ]
+    },
+    "SupportedDeploymentModes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfDeploymentMode"
+        },
+        {
+          "xml": {
+            "name": "supportedDeploymentModes"
+          },
+          "description": "The list of supported deployment modes."
+        }
+      ]
+    },
+    "SupportedEngineVersions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "supportedEngineVersions"
+          },
+          "description": "The list of supported engine versions."
+        }
+      ]
+    }
+  }
+}

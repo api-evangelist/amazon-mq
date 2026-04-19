@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-update-configuration-request-schema.json",
+  "title": "UpdateConfigurationRequest",
+  "description": "Updates the specified configuration.",
+  "type": "object",
+  "properties": {
+    "Data": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "data"
+          },
+          "description": "Required. The base64-encoded XML configuration."
+        }
+      ]
+    },
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "description"
+          },
+          "description": "The description of the configuration."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Data"
+  ]
+}

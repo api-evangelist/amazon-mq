@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-user-pending-changes-schema.json",
+  "title": "UserPendingChanges",
+  "description": "Returns information about the status of the changes pending for the ActiveMQ user.",
+  "type": "object",
+  "properties": {
+    "ConsoleAccess": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "consoleAccess"
+          },
+          "description": "Enables access to the the ActiveMQ Web Console for the ActiveMQ user."
+        }
+      ]
+    },
+    "Groups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "groups"
+          },
+          "description": "The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+        }
+      ]
+    },
+    "PendingChange": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeType"
+        },
+        {
+          "xml": {
+            "name": "pendingChange"
+          },
+          "description": "Required. The type of change pending for the ActiveMQ user."
+        }
+      ]
+    }
+  },
+  "required": [
+    "PendingChange"
+  ]
+}

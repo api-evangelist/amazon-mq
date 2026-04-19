@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-create-configuration-response-schema.json",
+  "title": "CreateConfigurationResponse",
+  "description": "CreateConfigurationResponse schema from Amazon MQ API",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "arn"
+          },
+          "description": "Required. The Amazon Resource Name (ARN) of the configuration."
+        }
+      ]
+    },
+    "AuthenticationStrategy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AuthenticationStrategy"
+        },
+        {
+          "xml": {
+            "name": "authenticationStrategy"
+          },
+          "description": "Optional. The authentication strategy associated with the configuration. The default is SIMPLE."
+        }
+      ]
+    },
+    "Created": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__timestampIso8601"
+        },
+        {
+          "xml": {
+            "name": "created"
+          },
+          "description": "Required. The date and time of the configuration."
+        }
+      ]
+    },
+    "Id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "id"
+          },
+          "description": "Required. The unique ID that Amazon MQ generates for the configuration."
+        }
+      ]
+    },
+    "LatestRevision": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConfigurationRevision"
+        },
+        {
+          "xml": {
+            "name": "latestRevision"
+          },
+          "description": "The latest revision of the configuration."
+        }
+      ]
+    },
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "name"
+          },
+          "description": "Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long."
+        }
+      ]
+    }
+  }
+}

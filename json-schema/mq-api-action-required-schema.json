@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-action-required-schema.json",
+  "title": "ActionRequired",
+  "description": "The action required to resolve a broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state.",
+  "type": "object",
+  "properties": {
+    "ActionRequiredCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "actionRequiredCode"
+          },
+          "description": "The code you can use to resolve your broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state. You can find instructions by choosing the link for your code from the list of action required codes in <a href=\"https://docs.aws.amazon.com//latest/developer-guide/troubleshooting-action-required-codes.html\">Amazon MQ action required codes</a>. Each code references a topic with detailed information, instructions, and recommendations for how to resolve the issue and prevent future occurrences."
+        }
+      ]
+    },
+    "ActionRequiredInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "actionRequiredInfo"
+          },
+          "description": "Information about the action required to resolve your broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state."
+        }
+      ]
+    }
+  }
+}

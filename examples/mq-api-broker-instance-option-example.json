@@ -1,0 +1,8 @@
+{
+  "AvailabilityZones": "example-value",
+  "EngineType": "STANDARD",
+  "HostInstanceType": "STANDARD",
+  "StorageType": "STANDARD",
+  "SupportedDeploymentModes": "example-value",
+  "SupportedEngineVersions": "example-value"
+}

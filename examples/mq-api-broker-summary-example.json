@@ -1,0 +1,10 @@
+{
+  "BrokerArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "BrokerId": "id-abc123",
+  "BrokerName": "example-resource",
+  "BrokerState": "example-value",
+  "Created": "example-value",
+  "DeploymentMode": "example-value",
+  "EngineType": "STANDARD",
+  "HostInstanceType": "STANDARD"
+}

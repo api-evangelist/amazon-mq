@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-list-configuration-revisions-response-structure.json",
+  "name": "ListConfigurationRevisionsResponse",
+  "type": "object",
+  "description": "ListConfigurationRevisionsResponse schema from Amazon MQ API",
+  "properties": {
+    "ConfigurationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "configurationId"
+          },
+          "description": "The unique ID that Amazon MQ generates for the configuration."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "xml": {
+            "name": "maxResults"
+          },
+          "description": "The maximum number of configuration revisions that can be returned per page (20 by default). This value must be an integer from 5 to 100."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "nextToken"
+          },
+          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+        }
+      ]
+    },
+    "Revisions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfConfigurationRevision"
+        },
+        {
+          "xml": {
+            "name": "revisions"
+          },
+          "description": "The list of all revisions for the specified configuration."
+        }
+      ]
+    }
+  }
+}

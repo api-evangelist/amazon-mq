@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-configuration-revision-structure.json",
+  "name": "ConfigurationRevision",
+  "type": "object",
+  "description": "Returns information about the specified configuration revision.",
+  "properties": {
+    "Created": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__timestampIso8601"
+        },
+        {
+          "xml": {
+            "name": "created"
+          },
+          "description": "Required. The date and time of the configuration revision."
+        }
+      ]
+    },
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "description"
+          },
+          "description": "The description of the configuration revision."
+        }
+      ]
+    },
+    "Revision": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "xml": {
+            "name": "revision"
+          },
+          "description": "Required. The revision number of the configuration."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Revision",
+    "Created"
+  ]
+}

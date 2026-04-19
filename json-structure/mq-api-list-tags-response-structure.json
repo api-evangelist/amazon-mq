@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-list-tags-response-structure.json",
+  "name": "ListTagsResponse",
+  "type": "object",
+  "description": "ListTagsResponse schema from Amazon MQ API",
+  "properties": {
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__mapOf__string"
+        },
+        {
+          "xml": {
+            "name": "tags"
+          },
+          "description": "The key-value pair for the resource tag."
+        }
+      ]
+    }
+  }
+}

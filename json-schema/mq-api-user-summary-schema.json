@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-user-summary-schema.json",
+  "title": "UserSummary",
+  "description": "Returns a list of all broker users. Does not apply to RabbitMQ brokers.",
+  "type": "object",
+  "properties": {
+    "PendingChange": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeType"
+        },
+        {
+          "xml": {
+            "name": "pendingChange"
+          },
+          "description": "The type of change pending for the broker user."
+        }
+      ]
+    },
+    "Username": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "username"
+          },
+          "description": "Required. The username of the broker user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Username"
+  ]
+}

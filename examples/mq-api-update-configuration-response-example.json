@@ -1,0 +1,8 @@
+{
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "Created": "example-value",
+  "Id": "id-abc123",
+  "LatestRevision": "example-value",
+  "Name": "example-resource",
+  "Warnings": "arn:aws:service:us-east-1:123456789012:resource/example"
+}

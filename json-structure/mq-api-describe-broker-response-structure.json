@@ -1,0 +1,386 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-describe-broker-response-structure.json",
+  "name": "DescribeBrokerResponse",
+  "type": "object",
+  "description": "DescribeBrokerResponse schema from Amazon MQ API",
+  "properties": {
+    "ActionsRequired": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfActionRequired"
+        },
+        {
+          "xml": {
+            "name": "actionsRequired"
+          },
+          "description": "A list of actions required for a broker."
+        }
+      ]
+    },
+    "AuthenticationStrategy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AuthenticationStrategy"
+        },
+        {
+          "xml": {
+            "name": "authenticationStrategy"
+          },
+          "description": "The authentication strategy used to secure the broker. The default is SIMPLE."
+        }
+      ]
+    },
+    "AutoMinorVersionUpgrade": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "autoMinorVersionUpgrade"
+          },
+          "description": "Enables automatic upgrades to new minor versions for brokers, as new versions are released and supported by Amazon MQ. Automatic upgrades occur during the scheduled maintenance window of the broker or after a manual broker reboot."
+        }
+      ]
+    },
+    "BrokerArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerArn"
+          },
+          "description": "The broker's Amazon Resource Name (ARN)."
+        }
+      ]
+    },
+    "BrokerId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerId"
+          },
+          "description": "The unique ID that Amazon MQ generates for the broker."
+        }
+      ]
+    },
+    "BrokerInstances": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfBrokerInstance"
+        },
+        {
+          "xml": {
+            "name": "brokerInstances"
+          },
+          "description": "A list of information about allocated brokers."
+        }
+      ]
+    },
+    "BrokerName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerName"
+          },
+          "description": "The broker's name. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain white spaces, brackets, wildcard characters, or special characters."
+        }
+      ]
+    },
+    "BrokerState": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BrokerState"
+        },
+        {
+          "xml": {
+            "name": "brokerState"
+          },
+          "description": "The broker's status."
+        }
+      ]
+    },
+    "Configurations": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Configurations"
+        },
+        {
+          "xml": {
+            "name": "configurations"
+          },
+          "description": "The list of all revisions for the specified configuration."
+        }
+      ]
+    },
+    "Created": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__timestampIso8601"
+        },
+        {
+          "xml": {
+            "name": "created"
+          },
+          "description": "The time when the broker was created."
+        }
+      ]
+    },
+    "DeploymentMode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DeploymentMode"
+        },
+        {
+          "xml": {
+            "name": "deploymentMode"
+          },
+          "description": "The broker's deployment mode."
+        }
+      ]
+    },
+    "EncryptionOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionOptions"
+        },
+        {
+          "xml": {
+            "name": "encryptionOptions"
+          },
+          "description": "Encryption options for the broker. Does not apply to RabbitMQ brokers."
+        }
+      ]
+    },
+    "EngineType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EngineType"
+        },
+        {
+          "xml": {
+            "name": "engineType"
+          },
+          "description": "The type of broker engine. Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ."
+        }
+      ]
+    },
+    "EngineVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "engineVersion"
+          },
+          "description": "The broker engine's version. For a list of supported engine versions, see <a href=\"https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html\">Supported engines</a>."
+        }
+      ]
+    },
+    "HostInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "hostInstanceType"
+          },
+          "description": "The broker's instance type."
+        }
+      ]
+    },
+    "LdapServerMetadata": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LdapServerMetadataOutput"
+        },
+        {
+          "xml": {
+            "name": "ldapServerMetadata"
+          },
+          "description": "The metadata of the LDAP server used to authenticate and authorize connections to the broker."
+        }
+      ]
+    },
+    "Logs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LogsSummary"
+        },
+        {
+          "xml": {
+            "name": "logs"
+          },
+          "description": "The list of information about logs currently enabled and pending to be deployed for the specified broker."
+        }
+      ]
+    },
+    "MaintenanceWindowStartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WeeklyStartTime"
+        },
+        {
+          "xml": {
+            "name": "maintenanceWindowStartTime"
+          },
+          "description": "The parameters that determine the WeeklyStartTime."
+        }
+      ]
+    },
+    "PendingAuthenticationStrategy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AuthenticationStrategy"
+        },
+        {
+          "xml": {
+            "name": "pendingAuthenticationStrategy"
+          },
+          "description": "The authentication strategy that will be applied when the broker is rebooted. The default is SIMPLE."
+        }
+      ]
+    },
+    "PendingEngineVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "pendingEngineVersion"
+          },
+          "description": "The broker engine version to upgrade to. For a list of supported engine versions, see <a href=\"https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html\">Supported engines</a>."
+        }
+      ]
+    },
+    "PendingHostInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "pendingHostInstanceType"
+          },
+          "description": "The broker's host instance type to upgrade to. For a list of supported instance types, see <a href=\"https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker.html#broker-instance-types\">Broker instance types</a>."
+        }
+      ]
+    },
+    "PendingLdapServerMetadata": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LdapServerMetadataOutput"
+        },
+        {
+          "xml": {
+            "name": "pendingLdapServerMetadata"
+          },
+          "description": "The metadata of the LDAP server that will be used to authenticate and authorize connections to the broker after it is rebooted."
+        }
+      ]
+    },
+    "PendingSecurityGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "pendingSecurityGroups"
+          },
+          "description": "The list of pending security groups to authorize connections to brokers."
+        }
+      ]
+    },
+    "PubliclyAccessible": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "publiclyAccessible"
+          },
+          "description": "Enables connections from applications outside of the VPC that hosts the broker's subnets."
+        }
+      ]
+    },
+    "SecurityGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "securityGroups"
+          },
+          "description": "The list of rules (1 minimum, 125 maximum) that authorize connections to brokers."
+        }
+      ]
+    },
+    "StorageType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BrokerStorageType"
+        },
+        {
+          "xml": {
+            "name": "storageType"
+          },
+          "description": "The broker's storage type."
+        }
+      ]
+    },
+    "SubnetIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "subnetIds"
+          },
+          "description": "The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones."
+        }
+      ]
+    },
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__mapOf__string"
+        },
+        {
+          "xml": {
+            "name": "tags"
+          },
+          "description": "The list of all tags associated with this broker."
+        }
+      ]
+    },
+    "Users": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfUserSummary"
+        },
+        {
+          "xml": {
+            "name": "users"
+          },
+          "description": "The list of all broker usernames for the specified broker."
+        }
+      ]
+    }
+  }
+}

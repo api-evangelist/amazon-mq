@@ -1,0 +1,21 @@
+{
+  "AuthenticationStrategy": "example-value",
+  "AutoMinorVersionUpgrade": "example-value",
+  "BrokerName": "example-resource",
+  "Configuration": "example-value",
+  "CreatorRequestId": "id-abc123",
+  "DeploymentMode": "example-value",
+  "EncryptionOptions": "example-value",
+  "EngineType": "STANDARD",
+  "EngineVersion": "example-value",
+  "HostInstanceType": "STANDARD",
+  "LdapServerMetadata": "example-value",
+  "Logs": "example-value",
+  "MaintenanceWindowStartTime": "example-value",
+  "PubliclyAccessible": "example-value",
+  "SecurityGroups": "example-value",
+  "StorageType": "STANDARD",
+  "SubnetIds": "id-abc123",
+  "Tags": "example-value",
+  "Users": "example-value"
+}

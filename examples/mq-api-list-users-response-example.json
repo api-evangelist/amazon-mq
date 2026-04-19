@@ -1,0 +1,6 @@
+{
+  "BrokerId": "id-abc123",
+  "MaxResults": "example-value",
+  "NextToken": "example-value",
+  "Users": "example-value"
+}

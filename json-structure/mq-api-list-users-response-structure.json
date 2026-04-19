@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-list-users-response-structure.json",
+  "name": "ListUsersResponse",
+  "type": "object",
+  "description": "ListUsersResponse schema from Amazon MQ API",
+  "properties": {
+    "BrokerId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerId"
+          },
+          "description": "Required. The unique ID that Amazon MQ generates for the broker."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integerMin5Max100"
+        },
+        {
+          "xml": {
+            "name": "maxResults"
+          },
+          "description": "Required. The maximum number of ActiveMQ users that can be returned per page (20 by default). This value must be an integer from 5 to 100."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "nextToken"
+          },
+          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+        }
+      ]
+    },
+    "Users": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfUserSummary"
+        },
+        {
+          "xml": {
+            "name": "users"
+          },
+          "description": "Required. The list of all ActiveMQ usernames for the specified broker. Does not apply to RabbitMQ brokers."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-weekly-start-time-structure.json",
+  "name": "WeeklyStartTime",
+  "type": "object",
+  "description": "The scheduled time period relative to UTC during which Amazon MQ begins to apply pending updates or patches to the broker.",
+  "properties": {
+    "DayOfWeek": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DayOfWeek"
+        },
+        {
+          "xml": {
+            "name": "dayOfWeek"
+          },
+          "description": "Required. The day of the week."
+        }
+      ]
+    },
+    "TimeOfDay": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "timeOfDay"
+          },
+          "description": "Required. The time, in 24-hour format."
+        }
+      ]
+    },
+    "TimeZone": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "timeZone"
+          },
+          "description": "The time zone, UTC by default, in either the Country/City format, or the UTC offset format."
+        }
+      ]
+    }
+  },
+  "required": [
+    "TimeOfDay",
+    "DayOfWeek"
+  ]
+}

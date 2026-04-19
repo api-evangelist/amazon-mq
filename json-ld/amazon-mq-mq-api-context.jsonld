@@ -1,0 +1,421 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pan": "https://pan.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "RebootBrokerRequest": "pan:RebootBrokerRequest",
+    "CreateUserRequest": "pan:CreateUserRequest",
+    "CreateUserResponse": "pan:CreateUserResponse",
+    "EngineType": "pan:EngineType",
+    "BrokerSummary": "pan:BrokerSummary",
+    "BrokerStorageType": "pan:BrokerStorageType",
+    "DescribeBrokerInstanceOptionsResponse": "pan:DescribeBrokerInstanceOptionsResponse",
+    "UpdateConfigurationResponse": "pan:UpdateConfigurationResponse",
+    "Logs": "pan:Logs",
+    "UpdateUserRequest": "pan:UpdateUserRequest",
+    "BrokerEngineType": "pan:BrokerEngineType",
+    "BrokerInstance": "pan:BrokerInstance",
+    "DescribeConfigurationRequest": "pan:DescribeConfigurationRequest",
+    "DescribeConfigurationRevisionResponse": "pan:DescribeConfigurationRevisionResponse",
+    "DayOfWeek": "pan:DayOfWeek",
+    "ListUsersRequest": "pan:ListUsersRequest",
+    "DeleteUserRequest": "pan:DeleteUserRequest",
+    "Configuration": "pan:Configuration",
+    "UpdateUserResponse": "pan:UpdateUserResponse",
+    "ListConfigurationsResponse": "pan:ListConfigurationsResponse",
+    "CreateConfigurationRequest": "pan:CreateConfigurationRequest",
+    "DeploymentMode": "pan:DeploymentMode",
+    "DeleteBrokerRequest": "pan:DeleteBrokerRequest",
+    "DeleteBrokerResponse": "pan:DeleteBrokerResponse",
+    "LogsSummary": "pan:LogsSummary",
+    "ListUsersResponse": "pan:ListUsersResponse",
+    "DescribeBrokerEngineTypesResponse": "pan:DescribeBrokerEngineTypesResponse",
+    "ListTagsRequest": "pan:ListTagsRequest",
+    "DeleteTagsRequest": "pan:DeleteTagsRequest",
+    "PendingLogs": "pan:PendingLogs",
+    "DescribeConfigurationResponse": "pan:DescribeConfigurationResponse",
+    "SanitizationWarningReason": "pan:SanitizationWarningReason",
+    "ListConfigurationsRequest": "pan:ListConfigurationsRequest",
+    "ListConfigurationRevisionsResponse": "pan:ListConfigurationRevisionsResponse",
+    "CreateTagsRequest": "pan:CreateTagsRequest",
+    "CreateBrokerRequest": "pan:CreateBrokerRequest",
+    "DescribeUserResponse": "pan:DescribeUserResponse",
+    "DeleteUserResponse": "pan:DeleteUserResponse",
+    "ListTagsResponse": "pan:ListTagsResponse",
+    "DescribeConfigurationRevisionRequest": "pan:DescribeConfigurationRevisionRequest",
+    "UnauthorizedException": "pan:UnauthorizedException",
+    "BrokerInstanceOption": "pan:BrokerInstanceOption",
+    "UpdateBrokerRequest": "pan:UpdateBrokerRequest",
+    "UserSummary": "pan:UserSummary",
+    "DescribeBrokerResponse": "pan:DescribeBrokerResponse",
+    "UpdateBrokerResponse": "pan:UpdateBrokerResponse",
+    "ListBrokersResponse": "pan:ListBrokersResponse",
+    "User": "pan:User",
+    "CreateConfigurationResponse": "pan:CreateConfigurationResponse",
+    "UpdateConfigurationRequest": "pan:UpdateConfigurationRequest",
+    "AuthenticationStrategy": "pan:AuthenticationStrategy",
+    "ConfigurationRevision": "pan:ConfigurationRevision",
+    "LdapServerMetadataOutput": "pan:LdapServerMetadataOutput",
+    "WeeklyStartTime": "pan:WeeklyStartTime",
+    "LdapServerMetadataInput": "pan:LdapServerMetadataInput",
+    "BrokerState": "pan:BrokerState",
+    "RebootBrokerResponse": "pan:RebootBrokerResponse",
+    "Configurations": "pan:Configurations",
+    "DescribeBrokerEngineTypesRequest": "pan:DescribeBrokerEngineTypesRequest",
+    "ConfigurationId": "pan:ConfigurationId",
+    "DescribeBrokerInstanceOptionsRequest": "pan:DescribeBrokerInstanceOptionsRequest",
+    "ListConfigurationRevisionsRequest": "pan:ListConfigurationRevisionsRequest",
+    "MaxResults": "pan:MaxResults",
+    "UserPendingChanges": "pan:UserPendingChanges",
+    "CreateBrokerResponse": "pan:CreateBrokerResponse",
+    "DescribeBrokerRequest": "pan:DescribeBrokerRequest",
+    "ChangeType": "pan:ChangeType",
+    "ActionRequired": "pan:ActionRequired",
+    "DescribeUserRequest": "pan:DescribeUserRequest",
+    "ListBrokersRequest": "pan:ListBrokersRequest",
+    "EncryptionOptions": "pan:EncryptionOptions",
+    "EngineVersion": "pan:EngineVersion",
+    "AvailabilityZone": "pan:AvailabilityZone",
+    "SanitizationWarning": "pan:SanitizationWarning",
+    "consoleAccess": {
+      "@id": "pan:console_access",
+      "@type": "xsd:string"
+    },
+    "groups": {
+      "@id": "pan:groups",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "pan:password",
+      "@type": "xsd:string"
+    },
+    "brokerArn": {
+      "@id": "pan:broker_arn",
+      "@type": "xsd:string"
+    },
+    "brokerId": {
+      "@id": "pan:broker_id",
+      "@type": "xsd:string"
+    },
+    "brokerName": {
+      "@id": "pan:broker_name",
+      "@type": "xsd:string"
+    },
+    "brokerState": {
+      "@id": "pan:broker_state",
+      "@type": "xsd:string"
+    },
+    "created": {
+      "@id": "pan:created",
+      "@type": "xsd:string"
+    },
+    "deploymentMode": {
+      "@id": "pan:deployment_mode",
+      "@type": "xsd:string"
+    },
+    "engineType": {
+      "@id": "pan:engine_type",
+      "@type": "xsd:string"
+    },
+    "hostInstanceType": {
+      "@id": "pan:host_instance_type",
+      "@type": "xsd:string"
+    },
+    "brokerInstanceOptions": {
+      "@id": "pan:broker_instance_options",
+      "@type": "xsd:string"
+    },
+    "maxResults": {
+      "@id": "pan:max_results",
+      "@type": "xsd:string"
+    },
+    "nextToken": {
+      "@id": "pan:next_token",
+      "@type": "xsd:string"
+    },
+    "arn": {
+      "@id": "pan:arn",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "pan:id",
+      "@type": "xsd:string"
+    },
+    "latestRevision": {
+      "@id": "pan:latest_revision",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "warnings": {
+      "@id": "pan:warnings",
+      "@type": "xsd:string"
+    },
+    "audit": {
+      "@id": "pan:audit",
+      "@type": "xsd:string"
+    },
+    "general": {
+      "@id": "pan:general",
+      "@type": "xsd:string"
+    },
+    "engineVersions": {
+      "@id": "pan:engine_versions",
+      "@type": "xsd:string"
+    },
+    "consoleUrl": {
+      "@id": "pan:console_url",
+      "@type": "xsd:string"
+    },
+    "endpoints": {
+      "@id": "pan:endpoints",
+      "@type": "xsd:string"
+    },
+    "ipAddress": {
+      "@id": "pan:ip_address",
+      "@type": "xsd:string"
+    },
+    "configurationId": {
+      "@id": "pan:configuration_id",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "pan:data",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "authenticationStrategy": {
+      "@id": "pan:authentication_strategy",
+      "@type": "xsd:string"
+    },
+    "engineVersion": {
+      "@id": "pan:engine_version",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pan:tags",
+      "@type": "xsd:string"
+    },
+    "configurations": {
+      "@id": "pan:configurations",
+      "@type": "xsd:string"
+    },
+    "auditLogGroup": {
+      "@id": "pan:audit_log_group",
+      "@type": "xsd:string"
+    },
+    "generalLogGroup": {
+      "@id": "pan:general_log_group",
+      "@type": "xsd:string"
+    },
+    "pending": {
+      "@id": "pan:pending",
+      "@type": "xsd:string"
+    },
+    "users": {
+      "@id": "pan:users",
+      "@type": "xsd:string"
+    },
+    "brokerEngineTypes": {
+      "@id": "pan:broker_engine_types",
+      "@type": "xsd:string"
+    },
+    "revisions": {
+      "@id": "pan:revisions",
+      "@type": "xsd:string"
+    },
+    "autoMinorVersionUpgrade": {
+      "@id": "pan:auto_minor_version_upgrade",
+      "@type": "xsd:string"
+    },
+    "configuration": {
+      "@id": "pan:configuration",
+      "@type": "xsd:string"
+    },
+    "creatorRequestId": {
+      "@id": "pan:creator_request_id",
+      "@type": "xsd:string"
+    },
+    "encryptionOptions": {
+      "@id": "pan:encryption_options",
+      "@type": "xsd:string"
+    },
+    "ldapServerMetadata": {
+      "@id": "pan:ldap_server_metadata",
+      "@type": "xsd:string"
+    },
+    "logs": {
+      "@id": "pan:logs",
+      "@type": "xsd:string"
+    },
+    "maintenanceWindowStartTime": {
+      "@id": "pan:maintenance_window_start_time",
+      "@type": "xsd:string"
+    },
+    "publiclyAccessible": {
+      "@id": "pan:publicly_accessible",
+      "@type": "xsd:string"
+    },
+    "securityGroups": {
+      "@id": "pan:security_groups",
+      "@type": "xsd:string"
+    },
+    "storageType": {
+      "@id": "pan:storage_type",
+      "@type": "xsd:string"
+    },
+    "subnetIds": {
+      "@id": "pan:subnet_ids",
+      "@type": "xsd:string"
+    },
+    "username": {
+      "@id": "pan:username",
+      "@type": "xsd:string"
+    },
+    "availabilityZones": {
+      "@id": "pan:availability_zones",
+      "@type": "xsd:string"
+    },
+    "supportedDeploymentModes": {
+      "@id": "pan:supported_deployment_modes",
+      "@type": "xsd:string"
+    },
+    "supportedEngineVersions": {
+      "@id": "pan:supported_engine_versions",
+      "@type": "xsd:string"
+    },
+    "pendingChange": {
+      "@id": "pan:pending_change",
+      "@type": "xsd:string"
+    },
+    "actionsRequired": {
+      "@id": "pan:actions_required",
+      "@type": "xsd:string"
+    },
+    "brokerInstances": {
+      "@id": "pan:broker_instances",
+      "@type": "xsd:string"
+    },
+    "pendingAuthenticationStrategy": {
+      "@id": "pan:pending_authentication_strategy",
+      "@type": "xsd:string"
+    },
+    "pendingEngineVersion": {
+      "@id": "pan:pending_engine_version",
+      "@type": "xsd:string"
+    },
+    "pendingHostInstanceType": {
+      "@id": "pan:pending_host_instance_type",
+      "@type": "xsd:string"
+    },
+    "pendingLdapServerMetadata": {
+      "@id": "pan:pending_ldap_server_metadata",
+      "@type": "xsd:string"
+    },
+    "pendingSecurityGroups": {
+      "@id": "pan:pending_security_groups",
+      "@type": "xsd:string"
+    },
+    "brokerSummaries": {
+      "@id": "pan:broker_summaries",
+      "@type": "xsd:string"
+    },
+    "revision": {
+      "@id": "pan:revision",
+      "@type": "xsd:string"
+    },
+    "hosts": {
+      "@id": "pan:hosts",
+      "@type": "xsd:string"
+    },
+    "roleBase": {
+      "@id": "pan:role_base",
+      "@type": "xsd:string"
+    },
+    "roleName": {
+      "@id": "pan:role_name",
+      "@type": "xsd:string"
+    },
+    "roleSearchMatching": {
+      "@id": "pan:role_search_matching",
+      "@type": "xsd:string"
+    },
+    "roleSearchSubtree": {
+      "@id": "pan:role_search_subtree",
+      "@type": "xsd:string"
+    },
+    "serviceAccountUsername": {
+      "@id": "pan:service_account_username",
+      "@type": "xsd:string"
+    },
+    "userBase": {
+      "@id": "pan:user_base",
+      "@type": "xsd:string"
+    },
+    "userRoleName": {
+      "@id": "pan:user_role_name",
+      "@type": "xsd:string"
+    },
+    "userSearchMatching": {
+      "@id": "pan:user_search_matching",
+      "@type": "xsd:string"
+    },
+    "userSearchSubtree": {
+      "@id": "pan:user_search_subtree",
+      "@type": "xsd:string"
+    },
+    "dayOfWeek": {
+      "@id": "pan:day_of_week",
+      "@type": "xsd:string"
+    },
+    "timeOfDay": {
+      "@id": "pan:time_of_day",
+      "@type": "xsd:string"
+    },
+    "timeZone": {
+      "@id": "pan:time_zone",
+      "@type": "xsd:string"
+    },
+    "serviceAccountPassword": {
+      "@id": "pan:service_account_password",
+      "@type": "xsd:string"
+    },
+    "current": {
+      "@id": "pan:current",
+      "@type": "xsd:string"
+    },
+    "history": {
+      "@id": "pan:history",
+      "@type": "xsd:string"
+    },
+    "actionRequiredCode": {
+      "@id": "pan:action_required_code",
+      "@type": "xsd:string"
+    },
+    "actionRequiredInfo": {
+      "@id": "pan:action_required_info",
+      "@type": "xsd:string"
+    },
+    "kmsKeyId": {
+      "@id": "pan:kms_key_id",
+      "@type": "xsd:string"
+    },
+    "useAwsOwnedKey": {
+      "@id": "pan:use_aws_owned_key",
+      "@type": "xsd:string"
+    },
+    "attributeName": {
+      "@id": "pan:attribute_name",
+      "@type": "xsd:string"
+    },
+    "elementName": {
+      "@id": "pan:element_name",
+      "@type": "xsd:string"
+    },
+    "reason": {
+      "@id": "pan:reason",
+      "@type": "xsd:string"
+    }
+  }
+}

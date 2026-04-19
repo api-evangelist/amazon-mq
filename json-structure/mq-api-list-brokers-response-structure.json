@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-list-brokers-response-structure.json",
+  "name": "ListBrokersResponse",
+  "type": "object",
+  "description": "ListBrokersResponse schema from Amazon MQ API",
+  "properties": {
+    "BrokerSummaries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfBrokerSummary"
+        },
+        {
+          "xml": {
+            "name": "brokerSummaries"
+          },
+          "description": "A list of information about all brokers."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "nextToken"
+          },
+          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+        }
+      ]
+    }
+  }
+}

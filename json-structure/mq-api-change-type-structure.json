@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-change-type-structure.json",
+  "name": "ChangeType",
+  "type": "string",
+  "description": "The type of change pending for the ActiveMQ user.",
+  "enum": [
+    "CREATE",
+    "UPDATE",
+    "DELETE"
+  ]
+}

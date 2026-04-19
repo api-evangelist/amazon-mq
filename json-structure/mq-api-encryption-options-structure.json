@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-encryption-options-structure.json",
+  "name": "EncryptionOptions",
+  "type": "object",
+  "description": "<important><p>Does not apply to RabbitMQ brokers.</p></important> <p>Encryption options for the broker.</p>",
+  "properties": {
+    "KmsKeyId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "kmsKeyId"
+          },
+          "description": "The customer master key (CMK) to use for the AWS Key Management Service (KMS). This key is used to encrypt your data at rest. If not provided, Amazon MQ will use a default CMK to encrypt your data."
+        }
+      ]
+    },
+    "UseAwsOwnedKey": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "useAwsOwnedKey"
+          },
+          "description": "Enables the use of an AWS owned CMK using AWS Key Management Service (KMS). Set to true by default, if no value is provided, for example, for RabbitMQ brokers."
+        }
+      ]
+    }
+  },
+  "required": [
+    "UseAwsOwnedKey"
+  ]
+}

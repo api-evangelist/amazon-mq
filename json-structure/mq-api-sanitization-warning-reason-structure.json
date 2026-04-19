@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-sanitization-warning-reason-structure.json",
+  "name": "SanitizationWarningReason",
+  "type": "string",
+  "description": "The reason for which the XML elements or attributes were sanitized.",
+  "enum": [
+    "DISALLOWED_ELEMENT_REMOVED",
+    "DISALLOWED_ATTRIBUTE_REMOVED",
+    "INVALID_ATTRIBUTE_VALUE_REMOVED"
+  ]
+}

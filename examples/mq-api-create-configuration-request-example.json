@@ -1,0 +1,7 @@
+{
+  "AuthenticationStrategy": "example-value",
+  "EngineType": "STANDARD",
+  "EngineVersion": "example-value",
+  "Name": "example-resource",
+  "Tags": "example-value"
+}

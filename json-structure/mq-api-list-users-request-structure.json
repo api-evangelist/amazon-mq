@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-list-users-request-structure.json",
+  "name": "ListUsersRequest",
+  "type": "object",
+  "description": "ListUsersRequest schema from Amazon MQ API",
+  "properties": {}
+}

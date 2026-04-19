@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-availability-zone-structure.json",
+  "name": "AvailabilityZone",
+  "type": "object",
+  "description": "Name of the availability zone.",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "name"
+          },
+          "description": "Id for the availability zone."
+        }
+      ]
+    }
+  }
+}

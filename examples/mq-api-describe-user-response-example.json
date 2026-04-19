@@ -1,0 +1,7 @@
+{
+  "BrokerId": "id-abc123",
+  "ConsoleAccess": "example-value",
+  "Groups": "example-value",
+  "Pending": "example-value",
+  "Username": "example-resource"
+}

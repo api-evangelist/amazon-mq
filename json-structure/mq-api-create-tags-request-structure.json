@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-create-tags-request-structure.json",
+  "name": "CreateTagsRequest",
+  "type": "object",
+  "description": "A map of the key-value pairs for the resource tag.",
+  "properties": {
+    "Tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__mapOf__string"
+        },
+        {
+          "xml": {
+            "name": "tags"
+          },
+          "description": "The key-value pair for the resource tag."
+        }
+      ]
+    }
+  }
+}

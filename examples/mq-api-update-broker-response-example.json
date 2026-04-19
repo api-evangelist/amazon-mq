@@ -1,0 +1,12 @@
+{
+  "AuthenticationStrategy": "example-value",
+  "AutoMinorVersionUpgrade": "example-value",
+  "BrokerId": "id-abc123",
+  "Configuration": "example-value",
+  "EngineVersion": "example-value",
+  "HostInstanceType": "STANDARD",
+  "LdapServerMetadata": "example-value",
+  "Logs": "example-value",
+  "MaintenanceWindowStartTime": "example-value",
+  "SecurityGroups": "example-value"
+}

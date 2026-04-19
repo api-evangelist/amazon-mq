@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-describe-configuration-request-structure.json",
+  "name": "DescribeConfigurationRequest",
+  "type": "object",
+  "description": "DescribeConfigurationRequest schema from Amazon MQ API",
+  "properties": {}
+}

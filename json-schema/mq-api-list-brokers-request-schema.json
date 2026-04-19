@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-list-brokers-request-schema.json",
+  "title": "ListBrokersRequest",
+  "description": "ListBrokersRequest schema from Amazon MQ API",
+  "type": "object",
+  "properties": {}
+}

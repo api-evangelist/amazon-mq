@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-delete-broker-response-structure.json",
+  "name": "DeleteBrokerResponse",
+  "type": "object",
+  "description": "DeleteBrokerResponse schema from Amazon MQ API",
+  "properties": {
+    "BrokerId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerId"
+          },
+          "description": "The unique ID that Amazon MQ generates for the broker."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-describe-broker-engine-types-request-structure.json",
+  "name": "DescribeBrokerEngineTypesRequest",
+  "type": "object",
+  "description": "DescribeBrokerEngineTypesRequest schema from Amazon MQ API",
+  "properties": {}
+}

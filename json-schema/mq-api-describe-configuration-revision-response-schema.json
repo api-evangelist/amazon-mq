@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-describe-configuration-revision-response-schema.json",
+  "title": "DescribeConfigurationRevisionResponse",
+  "description": "DescribeConfigurationRevisionResponse schema from Amazon MQ API",
+  "type": "object",
+  "properties": {
+    "ConfigurationId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "configurationId"
+          },
+          "description": "Required. The unique ID that Amazon MQ generates for the configuration."
+        }
+      ]
+    },
+    "Created": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__timestampIso8601"
+        },
+        {
+          "xml": {
+            "name": "created"
+          },
+          "description": "Required. The date and time of the configuration."
+        }
+      ]
+    },
+    "Data": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "data"
+          },
+          "description": "Required. The base64-encoded XML configuration."
+        }
+      ]
+    },
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "description"
+          },
+          "description": "The description of the configuration."
+        }
+      ]
+    }
+  }
+}

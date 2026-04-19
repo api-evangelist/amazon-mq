@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-create-broker-response-structure.json",
+  "name": "CreateBrokerResponse",
+  "type": "object",
+  "description": "CreateBrokerResponse schema from Amazon MQ API",
+  "properties": {
+    "BrokerArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerArn"
+          },
+          "description": "The broker's Amazon Resource Name (ARN)."
+        }
+      ]
+    },
+    "BrokerId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerId"
+          },
+          "description": "The unique ID that Amazon MQ generates for the broker."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-broker-summary-structure.json",
+  "name": "BrokerSummary",
+  "type": "object",
+  "description": "Returns information about all brokers.",
+  "properties": {
+    "BrokerArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerArn"
+          },
+          "description": "The broker's Amazon Resource Name (ARN)."
+        }
+      ]
+    },
+    "BrokerId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerId"
+          },
+          "description": "The unique ID that Amazon MQ generates for the broker."
+        }
+      ]
+    },
+    "BrokerName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerName"
+          },
+          "description": "The broker's name. This value is unique in your AWS account, 1-50 characters long, and containing only letters, numbers, dashes, and underscores, and must not contain white spaces, brackets, wildcard characters, or special characters."
+        }
+      ]
+    },
+    "BrokerState": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BrokerState"
+        },
+        {
+          "xml": {
+            "name": "brokerState"
+          },
+          "description": "The broker's status."
+        }
+      ]
+    },
+    "Created": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__timestampIso8601"
+        },
+        {
+          "xml": {
+            "name": "created"
+          },
+          "description": "The time when the broker was created."
+        }
+      ]
+    },
+    "DeploymentMode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DeploymentMode"
+        },
+        {
+          "xml": {
+            "name": "deploymentMode"
+          },
+          "description": "The broker's deployment mode."
+        }
+      ]
+    },
+    "EngineType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EngineType"
+        },
+        {
+          "xml": {
+            "name": "engineType"
+          },
+          "description": "The type of broker engine."
+        }
+      ]
+    },
+    "HostInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "hostInstanceType"
+          },
+          "description": "The broker's instance type."
+        }
+      ]
+    }
+  },
+  "required": [
+    "DeploymentMode",
+    "EngineType"
+  ]
+}

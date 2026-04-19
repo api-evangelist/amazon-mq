@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-broker-instance-schema.json",
+  "title": "BrokerInstance",
+  "description": "Returns information about all brokers.",
+  "type": "object",
+  "properties": {
+    "ConsoleURL": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "consoleURL"
+          },
+          "description": "The brokers web console URL."
+        }
+      ]
+    },
+    "Endpoints": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "endpoints"
+          },
+          "description": "The broker's wire-level protocol endpoints."
+        }
+      ]
+    },
+    "IpAddress": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "ipAddress"
+          },
+          "description": "The IP address of the Elastic Network Interface (ENI) attached to the broker. Does not apply to RabbitMQ brokers."
+        }
+      ]
+    }
+  }
+}

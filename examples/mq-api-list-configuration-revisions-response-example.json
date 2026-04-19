@@ -1,0 +1,6 @@
+{
+  "ConfigurationId": "id-abc123",
+  "MaxResults": "example-value",
+  "NextToken": "example-value",
+  "Revisions": "example-value"
+}

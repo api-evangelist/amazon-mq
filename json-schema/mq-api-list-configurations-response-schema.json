@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-list-configurations-response-schema.json",
+  "title": "ListConfigurationsResponse",
+  "description": "ListConfigurationsResponse schema from Amazon MQ API",
+  "type": "object",
+  "properties": {
+    "Configurations": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfConfiguration"
+        },
+        {
+          "xml": {
+            "name": "configurations"
+          },
+          "description": "The list of all revisions for the specified configuration."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__integer"
+        },
+        {
+          "xml": {
+            "name": "maxResults"
+          },
+          "description": "The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "nextToken"
+          },
+          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+        }
+      ]
+    }
+  }
+}

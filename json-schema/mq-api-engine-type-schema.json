@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-engine-type-schema.json",
+  "title": "EngineType",
+  "description": "The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.",
+  "type": "string",
+  "enum": [
+    "ACTIVEMQ",
+    "RABBITMQ"
+  ]
+}

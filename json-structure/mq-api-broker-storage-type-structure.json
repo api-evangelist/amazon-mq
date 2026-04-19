@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-broker-storage-type-structure.json",
+  "name": "BrokerStorageType",
+  "type": "string",
+  "description": "<p>The broker's storage type.</p> <important><p>EFS is not supported for RabbitMQ engine type.</p></important>",
+  "enum": [
+    "EBS",
+    "EFS"
+  ]
+}

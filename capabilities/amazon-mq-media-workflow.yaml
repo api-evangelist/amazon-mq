@@ -1,0 +1,116 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon MQ Workflow
+  description: Workflow capability for Amazon MQ media processing operations for broadcast engineers and media developers.
+  tags:
+  - AWS
+  - Media
+  - Broadcasting
+  - Workflow
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - import: mq
+    location: ./shared/mq.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: mq-workflow-api
+    description: Unified REST API for Amazon MQ workflow management.
+    resources:
+    - path: /v1/jobs
+      name: jobs
+      description: Manage media processing jobs
+      operations:
+      - method: GET
+        name: list-jobs
+        description: List jobs
+        call: mq.list-jobs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: mq-workflow-mcp
+    transport: http
+    description: MCP server for AI-assisted Amazon MQ workflow management.
+    tools:
+    - name: list-brokers
+      description: ListBrokers
+      hints:
+        readOnly: true
+        openWorld: true
+      call: mq.list-brokers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-broker
+      description: CreateBroker
+      hints:
+        readOnly: false
+        openWorld: true
+      call: mq.create-broker
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-configurations
+      description: ListConfigurations
+      hints:
+        readOnly: true
+        openWorld: true
+      call: mq.list-configurations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-configuration
+      description: CreateConfiguration
+      hints:
+        readOnly: false
+        openWorld: true
+      call: mq.create-configuration
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tags
+      description: ListTags
+      hints:
+        readOnly: true
+        openWorld: true
+      call: mq.list-tags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-tags
+      description: CreateTags
+      hints:
+        readOnly: false
+        openWorld: true
+      call: mq.create-tags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: describe-user
+      description: DescribeUser
+      hints:
+        readOnly: true
+        openWorld: true
+      call: mq.describe-user
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-user
+      description: CreateUser
+      hints:
+        readOnly: false
+        openWorld: true
+      call: mq.create-user
+      outputParameters:
+      - type: object
+        mapping: $.

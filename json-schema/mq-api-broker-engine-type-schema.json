@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-broker-engine-type-schema.json",
+  "title": "BrokerEngineType",
+  "description": "Types of broker engines.",
+  "type": "object",
+  "properties": {
+    "EngineType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EngineType"
+        },
+        {
+          "xml": {
+            "name": "engineType"
+          },
+          "description": "The broker's engine type."
+        }
+      ]
+    },
+    "EngineVersions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfEngineVersion"
+        },
+        {
+          "xml": {
+            "name": "engineVersions"
+          },
+          "description": "The list of engine versions."
+        }
+      ]
+    }
+  }
+}

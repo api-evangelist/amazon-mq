@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-configurations-schema.json",
+  "title": "Configurations",
+  "description": "Broker configuration information",
+  "type": "object",
+  "properties": {
+    "Current": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConfigurationId"
+        },
+        {
+          "xml": {
+            "name": "current"
+          },
+          "description": "The broker's current configuration."
+        }
+      ]
+    },
+    "History": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOfConfigurationId"
+        },
+        {
+          "xml": {
+            "name": "history"
+          },
+          "description": "The history of configurations applied to the broker."
+        }
+      ]
+    },
+    "Pending": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConfigurationId"
+        },
+        {
+          "xml": {
+            "name": "pending"
+          },
+          "description": "The broker's pending configuration."
+        }
+      ]
+    }
+  }
+}

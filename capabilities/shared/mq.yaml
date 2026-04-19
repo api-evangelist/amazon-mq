@@ -1,0 +1,558 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon MQ API
+  description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud, enabling you to migrate to a 
+    message broker without writing the code that typically enables interoperability with existing applications.
+  tags:
+  - AWS
+  - Media
+  - Broadcasting
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - type: http
+    namespace: mq
+    baseUri: http://mq.{region}.amazonaws.com
+    description: Amazon MQ REST API
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{AWS_ACCESS_KEY_ID}}'
+      placement: header
+    resources:
+    - name: default
+      path: /
+      description: Amazon MQ resources
+      operations:
+      - name: list-brokers
+        method: GET
+        description: ListBrokers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: integer
+          required: false
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        - name: MaxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+      - name: create-broker
+        method: POST
+        description: CreateBroker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: list-configurations
+        method: GET
+        description: ListConfigurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: integer
+          required: false
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+      - name: create-configuration
+        method: POST
+        description: CreateConfiguration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: list-tags
+        method: GET
+        description: ListTags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource-arn
+          in: path
+          type: string
+          required: true
+          description: The Amazon Resource Name (ARN) of the resource tag.
+      - name: create-tags
+        method: POST
+        description: CreateTags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource-arn
+          in: path
+          type: string
+          required: true
+          description: The Amazon Resource Name (ARN) of the resource tag.
+        body:
+          type: json
+          data: {}
+      - name: describe-user
+        method: GET
+        description: DescribeUser
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+        - name: username
+          in: path
+          type: string
+          required: true
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters 
+            long.
+      - name: create-user
+        method: POST
+        description: CreateUser
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+        - name: username
+          in: path
+          type: string
+          required: true
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters 
+            long.
+        body:
+          type: json
+          data: {}
+      - name: update-user
+        method: PUT
+        description: UpdateUser
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+        - name: username
+          in: path
+          type: string
+          required: true
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters 
+            long.
+        body:
+          type: json
+          data: {}
+      - name: delete-user
+        method: DELETE
+        description: DeleteUser
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+        - name: username
+          in: path
+          type: string
+          required: true
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters 
+            long.
+      - name: describe-broker
+        method: GET
+        description: DescribeBroker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+      - name: update-broker
+        method: PUT
+        description: UpdateBroker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+        body:
+          type: json
+          data: {}
+      - name: delete-broker
+        method: DELETE
+        description: DeleteBroker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+      - name: delete-tags
+        method: DELETE
+        description: DeleteTags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource-arn
+          in: path
+          type: string
+          required: true
+          description: The Amazon Resource Name (ARN) of the resource tag.
+        - name: tagKeys
+          in: query
+          type: array
+          required: true
+          description: An array of tag keys to delete
+      - name: describe-broker-engine-types
+        method: GET
+        description: DescribeBrokerEngineTypes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: engineType
+          in: query
+          type: string
+          required: false
+          description: Filter response by engine type.
+        - name: maxResults
+          in: query
+          type: integer
+          required: false
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+      - name: describe-broker-instance-options
+        method: GET
+        description: DescribeBrokerInstanceOptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: engineType
+          in: query
+          type: string
+          required: false
+          description: Filter response by engine type.
+        - name: hostInstanceType
+          in: query
+          type: string
+          required: false
+          description: Filter response by host instance type.
+        - name: maxResults
+          in: query
+          type: integer
+          required: false
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        - name: storageType
+          in: query
+          type: string
+          required: false
+          description: Filter response by storage type.
+      - name: describe-configuration
+        method: GET
+        description: DescribeConfiguration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the configuration.
+      - name: update-configuration
+        method: PUT
+        description: UpdateConfiguration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the configuration.
+        body:
+          type: json
+          data: {}
+      - name: describe-configuration-revision
+        method: GET
+        description: DescribeConfigurationRevision
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the configuration.
+        - name: configuration-revision
+          in: path
+          type: string
+          required: true
+          description: The revision of the configuration.
+      - name: list-configuration-revisions
+        method: GET
+        description: ListConfigurationRevisions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the configuration.
+        - name: maxResults
+          in: query
+          type: integer
+          required: false
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+      - name: list-users
+        method: GET
+        description: ListUsers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+        - name: maxResults
+          in: query
+          type: integer
+          required: false
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+      - name: reboot-broker
+        method: POST
+        description: RebootBroker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          required: true
+          description: The unique ID that Amazon MQ generates for the broker.
+        body:
+          type: json
+          data: {}
+  exposes:
+  - type: rest
+    port: 8100
+    namespace: mq-rest
+    resources:
+    - path: /v1/resources
+      name: resources
+      description: Amazon MQ resources
+      operations:
+      - method: GET
+        name: list-resources
+        description: List Amazon MQ resources
+        call: mq.list
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9100
+    namespace: mq-mcp
+    transport: http
+    tools:
+    - name: list-brokers
+      description: ListBrokers
+      hints:
+        readOnly: true
+      call: mq.list-brokers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-broker
+      description: CreateBroker
+      hints:
+        readOnly: false
+      call: mq.create-broker
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-configurations
+      description: ListConfigurations
+      hints:
+        readOnly: true
+      call: mq.list-configurations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-configuration
+      description: CreateConfiguration
+      hints:
+        readOnly: false
+      call: mq.create-configuration
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tags
+      description: ListTags
+      hints:
+        readOnly: true
+      call: mq.list-tags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-tags
+      description: CreateTags
+      hints:
+        readOnly: false
+      call: mq.create-tags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: describe-user
+      description: DescribeUser
+      hints:
+        readOnly: true
+      call: mq.describe-user
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-user
+      description: CreateUser
+      hints:
+        readOnly: false
+      call: mq.create-user
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user
+      description: UpdateUser
+      hints:
+        readOnly: false
+      call: mq.update-user
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-user
+      description: DeleteUser
+      hints:
+        readOnly: false
+      call: mq.delete-user
+      outputParameters:
+      - type: object
+        mapping: $.

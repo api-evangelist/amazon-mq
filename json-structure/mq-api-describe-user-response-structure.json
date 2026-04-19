@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-structure/mq-api-describe-user-response-structure.json",
+  "name": "DescribeUserResponse",
+  "type": "object",
+  "description": "DescribeUserResponse schema from Amazon MQ API",
+  "properties": {
+    "BrokerId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "brokerId"
+          },
+          "description": "Required. The unique ID that Amazon MQ generates for the broker."
+        }
+      ]
+    },
+    "ConsoleAccess": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "consoleAccess"
+          },
+          "description": "Enables access to the the ActiveMQ Web Console for the ActiveMQ user."
+        }
+      ]
+    },
+    "Groups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "groups"
+          },
+          "description": "The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+        }
+      ]
+    },
+    "Pending": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UserPendingChanges"
+        },
+        {
+          "xml": {
+            "name": "pending"
+          },
+          "description": "The status of the changes pending for the ActiveMQ user."
+        }
+      ]
+    },
+    "Username": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "username"
+          },
+          "description": "Required. The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+        }
+      ]
+    }
+  }
+}

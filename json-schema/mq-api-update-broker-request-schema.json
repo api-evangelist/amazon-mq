@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/json-schema/mq-api-update-broker-request-schema.json",
+  "title": "UpdateBrokerRequest",
+  "description": "Updates the broker using the specified properties.",
+  "type": "object",
+  "properties": {
+    "AuthenticationStrategy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AuthenticationStrategy"
+        },
+        {
+          "xml": {
+            "name": "authenticationStrategy"
+          },
+          "description": "Optional. The authentication strategy used to secure the broker. The default is SIMPLE."
+        }
+      ]
+    },
+    "AutoMinorVersionUpgrade": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__boolean"
+        },
+        {
+          "xml": {
+            "name": "autoMinorVersionUpgrade"
+          },
+          "description": "Enables automatic upgrades to new minor versions for brokers, as new versions are released and supported by Amazon MQ. Automatic upgrades occur during the scheduled maintenance window of the broker or after a manual broker reboot."
+        }
+      ]
+    },
+    "Configuration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConfigurationId"
+        },
+        {
+          "xml": {
+            "name": "configuration"
+          },
+          "description": "A list of information about the configuration."
+        }
+      ]
+    },
+    "EngineVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "engineVersion"
+          },
+          "description": "The broker engine version. For a list of supported engine versions, see <a href=\"https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html\">Supported engines</a>."
+        }
+      ]
+    },
+    "HostInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__string"
+        },
+        {
+          "xml": {
+            "name": "hostInstanceType"
+          },
+          "description": "The broker's host instance type to upgrade to. For a list of supported instance types, see <a href=\"https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker.html#broker-instance-types\">Broker instance types</a>."
+        }
+      ]
+    },
+    "LdapServerMetadata": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LdapServerMetadataInput"
+        },
+        {
+          "xml": {
+            "name": "ldapServerMetadata"
+          },
+          "description": "Optional. The metadata of the LDAP server used to authenticate and authorize connections to the broker. Does not apply to RabbitMQ brokers."
+        }
+      ]
+    },
+    "Logs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Logs"
+        },
+        {
+          "xml": {
+            "name": "logs"
+          },
+          "description": "Enables Amazon CloudWatch logging for brokers."
+        }
+      ]
+    },
+    "MaintenanceWindowStartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WeeklyStartTime"
+        },
+        {
+          "xml": {
+            "name": "maintenanceWindowStartTime"
+          },
+          "description": "The parameters that determine the WeeklyStartTime."
+        }
+      ]
+    },
+    "SecurityGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/__listOf__string"
+        },
+        {
+          "xml": {
+            "name": "securityGroups"
+          },
+          "description": "The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers."
+        }
+      ]
+    }
+  }
+}
