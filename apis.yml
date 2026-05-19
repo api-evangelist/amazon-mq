@@ -1,7 +1,8 @@
 aid: amazon-mq
 name: Amazon MQ
-description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud, enabling you to migrate to a message 
-  broker without writing the code that typically enables interoperability with existing applications.
+description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and
+  operate message brokers in the cloud, enabling you to migrate to a message broker without writing the code that typically
+  enables interoperability with existing applications.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -11,13 +12,14 @@ tags:
 - Media
 url: https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
 - aid: amazon-mq:mq-api
   name: Amazon MQ API
-  description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud, enabling you to migrate to a 
-    message broker without writing the code that typically enables interoperability with existing applications.
+  description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up
+    and operate message brokers in the cloud, enabling you to migrate to a message broker without writing the code that typically
+    enables interoperability with existing applications.
   humanURL: https://aws.amazon.com/mq/
   baseURL: http://mq.{region}.amazonaws.com
   tags:
@@ -35,6 +37,8 @@ apis:
     url: https://aws.amazon.com/mq/pricing/
   - type: FAQ
     url: https://aws.amazon.com/mq/faqs/
+  - type: NaftikoCapability
+    url: capabilities/amazon-mq.yaml
 common:
 - type: Portal
   url: https://aws.amazon.com/mq/
@@ -62,8 +66,6 @@ common:
   url: rules/amazon-mq-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/amazon-mq-vocabulary.yaml
-- type: NaftikoCapability
-  url: capabilities/amazon-mq-media-workflow.yaml
 - type: Features
   data:
   - name: Managed Message Brokers
@@ -103,14 +105,14 @@ common:
 - type: Integrations
   url: https://aws.amazon.com/partners/
 integrations:
-  - name: Partner Programs
-  - name: Resources
-  - name: Success Stories
-  - name: Work with an AWS Partner
-  - name: AWS Marketplace
-  - name: AWS Partner Central
-  - name: Partner Paths
-  - name: co-sell with AWS
+- name: Partner Programs
+- name: Resources
+- name: Success Stories
+- name: Work with an AWS Partner
+- name: AWS Marketplace
+- name: AWS Partner Central
+- name: Partner Paths
+- name: co-sell with AWS
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

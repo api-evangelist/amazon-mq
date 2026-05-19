@@ -1,0 +1,1073 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AmazonMQ
+  description: 'AmazonMQ. 22 operations. Lead operation: Amazon MQ Describe Broker Engine Types. Self-contained Naftiko capability
+    covering one Amazon Mq business surface.'
+  tags:
+  - Amazon Mq
+  - AmazonMQ
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_MQ_API_KEY: AMAZON_MQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-mq
+    baseUri: http://mq.{region}.amazonaws.com
+    description: AmazonMQ business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-broker-engine-types
+      path: /v1/broker-engine-types
+      operations:
+      - name: describebrokerenginetypes
+        method: GET
+        description: Amazon MQ Describe Broker Engine Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: engineType
+          in: query
+          type: string
+          description: Filter response by engine type.
+        - name: maxResults
+          in: query
+          type: integer
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be
+            an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page,
+            leave nextToken empty.
+    - name: v1-broker-instance-options
+      path: /v1/broker-instance-options
+      operations:
+      - name: describebrokerinstanceoptions
+        method: GET
+        description: Amazon MQ Describe Broker Instance Options
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: engineType
+          in: query
+          type: string
+          description: Filter response by engine type.
+        - name: hostInstanceType
+          in: query
+          type: string
+          description: Filter response by host instance type.
+        - name: maxResults
+          in: query
+          type: integer
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be
+            an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page,
+            leave nextToken empty.
+        - name: storageType
+          in: query
+          type: string
+          description: Filter response by storage type.
+    - name: v1-brokers
+      path: /v1/brokers
+      operations:
+      - name: createbroker
+        method: POST
+        description: Amazon MQ Create Broker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listbrokers
+        method: GET
+        description: Amazon MQ List Brokers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: integer
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be
+            an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page,
+            leave nextToken empty.
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: v1-brokers-broker-id
+      path: /v1/brokers/{broker-id}
+      operations:
+      - name: deletebroker
+        method: DELETE
+        description: Amazon MQ Delete Broker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+      - name: describebroker
+        method: GET
+        description: Amazon MQ Describe Broker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+      - name: updatebroker
+        method: PUT
+        description: Amazon MQ Update Broker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-brokers-broker-id-reboot
+      path: /v1/brokers/{broker-id}/reboot
+      operations:
+      - name: rebootbroker
+        method: POST
+        description: Amazon MQ Reboot Broker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+    - name: v1-brokers-broker-id-users
+      path: /v1/brokers/{broker-id}/users
+      operations:
+      - name: listusers
+        method: GET
+        description: Amazon MQ List Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be
+            an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page,
+            leave nextToken empty.
+    - name: v1-brokers-broker-id-users-username
+      path: /v1/brokers/{broker-id}/users/{username}
+      operations:
+      - name: createuser
+        method: POST
+        description: Amazon MQ Create User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+        - name: username
+          in: path
+          type: string
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods,
+            underscores, and tildes (- . _ ~). This value must be 2
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteuser
+        method: DELETE
+        description: Amazon MQ Delete User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+        - name: username
+          in: path
+          type: string
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods,
+            underscores, and tildes (- . _ ~). This value must be 2
+          required: true
+      - name: describeuser
+        method: GET
+        description: Amazon MQ Describe User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+        - name: username
+          in: path
+          type: string
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods,
+            underscores, and tildes (- . _ ~). This value must be 2
+          required: true
+      - name: updateuser
+        method: PUT
+        description: Amazon MQ Update User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: broker-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the broker.
+          required: true
+        - name: username
+          in: path
+          type: string
+          description: The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods,
+            underscores, and tildes (- . _ ~). This value must be 2
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-configurations
+      path: /v1/configurations
+      operations:
+      - name: createconfiguration
+        method: POST
+        description: Amazon MQ Create Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listconfigurations
+        method: GET
+        description: Amazon MQ List Configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: integer
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be
+            an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page,
+            leave nextToken empty.
+    - name: v1-configurations-configuration-id
+      path: /v1/configurations/{configuration-id}
+      operations:
+      - name: describeconfiguration
+        method: GET
+        description: Amazon MQ Describe Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the configuration.
+          required: true
+      - name: updateconfiguration
+        method: PUT
+        description: Amazon MQ Update Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the configuration.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-configurations-configuration-id-revisions
+      path: /v1/configurations/{configuration-id}/revisions
+      operations:
+      - name: listconfigurationrevisions
+        method: GET
+        description: Amazon MQ List Configuration Revisions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the configuration.
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+          description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be
+            an integer from 5 to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: The token that specifies the next page of results Amazon MQ should return. To request the first page,
+            leave nextToken empty.
+    - name: v1-configurations-configuration-id-revisions-configuration-revision
+      path: /v1/configurations/{configuration-id}/revisions/{configuration-revision}
+      operations:
+      - name: describeconfigurationrevision
+        method: GET
+        description: Amazon MQ Describe Configuration Revision
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configuration-id
+          in: path
+          type: string
+          description: The unique ID that Amazon MQ generates for the configuration.
+          required: true
+        - name: configuration-revision
+          in: path
+          type: string
+          description: The revision of the configuration.
+          required: true
+    - name: v1-tags-resource-arn
+      path: /v1/tags/{resource-arn}
+      operations:
+      - name: createtags
+        method: POST
+        description: Amazon MQ Create Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource-arn
+          in: path
+          type: string
+          description: The Amazon Resource Name (ARN) of the resource tag.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listtags
+        method: GET
+        description: Amazon MQ List Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource-arn
+          in: path
+          type: string
+          description: The Amazon Resource Name (ARN) of the resource tag.
+          required: true
+    - name: v1-tags-resource-arn}#tagKeys
+      path: /v1/tags/{resource-arn}#tagKeys
+      operations:
+      - name: deletetags
+        method: DELETE
+        description: Amazon MQ Delete Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource-arn
+          in: path
+          type: string
+          description: The Amazon Resource Name (ARN) of the resource tag.
+          required: true
+        - name: tagKeys
+          in: query
+          type: array
+          description: An array of tag keys to delete
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_MQ_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-mq-rest
+    port: 8080
+    description: REST adapter for AmazonMQ. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/broker-engine-types
+      name: v1-broker-engine-types
+      description: REST surface for v1-broker-engine-types.
+      operations:
+      - method: GET
+        name: describebrokerenginetypes
+        description: Amazon MQ Describe Broker Engine Types
+        call: amazon-mq.describebrokerenginetypes
+        with:
+          engineType: rest.engineType
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/broker-instance-options
+      name: v1-broker-instance-options
+      description: REST surface for v1-broker-instance-options.
+      operations:
+      - method: GET
+        name: describebrokerinstanceoptions
+        description: Amazon MQ Describe Broker Instance Options
+        call: amazon-mq.describebrokerinstanceoptions
+        with:
+          engineType: rest.engineType
+          hostInstanceType: rest.hostInstanceType
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          storageType: rest.storageType
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/brokers
+      name: v1-brokers
+      description: REST surface for v1-brokers.
+      operations:
+      - method: POST
+        name: createbroker
+        description: Amazon MQ Create Broker
+        call: amazon-mq.createbroker
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listbrokers
+        description: Amazon MQ List Brokers
+        call: amazon-mq.listbrokers
+        with:
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/brokers/{broker-id}
+      name: v1-brokers-broker-id
+      description: REST surface for v1-brokers-broker-id.
+      operations:
+      - method: DELETE
+        name: deletebroker
+        description: Amazon MQ Delete Broker
+        call: amazon-mq.deletebroker
+        with:
+          broker-id: rest.broker-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: describebroker
+        description: Amazon MQ Describe Broker
+        call: amazon-mq.describebroker
+        with:
+          broker-id: rest.broker-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatebroker
+        description: Amazon MQ Update Broker
+        call: amazon-mq.updatebroker
+        with:
+          broker-id: rest.broker-id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/brokers/{broker-id}/reboot
+      name: v1-brokers-broker-id-reboot
+      description: REST surface for v1-brokers-broker-id-reboot.
+      operations:
+      - method: POST
+        name: rebootbroker
+        description: Amazon MQ Reboot Broker
+        call: amazon-mq.rebootbroker
+        with:
+          broker-id: rest.broker-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/brokers/{broker-id}/users
+      name: v1-brokers-broker-id-users
+      description: REST surface for v1-brokers-broker-id-users.
+      operations:
+      - method: GET
+        name: listusers
+        description: Amazon MQ List Users
+        call: amazon-mq.listusers
+        with:
+          broker-id: rest.broker-id
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/brokers/{broker-id}/users/{username}
+      name: v1-brokers-broker-id-users-username
+      description: REST surface for v1-brokers-broker-id-users-username.
+      operations:
+      - method: POST
+        name: createuser
+        description: Amazon MQ Create User
+        call: amazon-mq.createuser
+        with:
+          broker-id: rest.broker-id
+          username: rest.username
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuser
+        description: Amazon MQ Delete User
+        call: amazon-mq.deleteuser
+        with:
+          broker-id: rest.broker-id
+          username: rest.username
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: describeuser
+        description: Amazon MQ Describe User
+        call: amazon-mq.describeuser
+        with:
+          broker-id: rest.broker-id
+          username: rest.username
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateuser
+        description: Amazon MQ Update User
+        call: amazon-mq.updateuser
+        with:
+          broker-id: rest.broker-id
+          username: rest.username
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configurations
+      name: v1-configurations
+      description: REST surface for v1-configurations.
+      operations:
+      - method: POST
+        name: createconfiguration
+        description: Amazon MQ Create Configuration
+        call: amazon-mq.createconfiguration
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listconfigurations
+        description: Amazon MQ List Configurations
+        call: amazon-mq.listconfigurations
+        with:
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configurations/{configuration-id}
+      name: v1-configurations-configuration-id
+      description: REST surface for v1-configurations-configuration-id.
+      operations:
+      - method: GET
+        name: describeconfiguration
+        description: Amazon MQ Describe Configuration
+        call: amazon-mq.describeconfiguration
+        with:
+          configuration-id: rest.configuration-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateconfiguration
+        description: Amazon MQ Update Configuration
+        call: amazon-mq.updateconfiguration
+        with:
+          configuration-id: rest.configuration-id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configurations/{configuration-id}/revisions
+      name: v1-configurations-configuration-id-revisions
+      description: REST surface for v1-configurations-configuration-id-revisions.
+      operations:
+      - method: GET
+        name: listconfigurationrevisions
+        description: Amazon MQ List Configuration Revisions
+        call: amazon-mq.listconfigurationrevisions
+        with:
+          configuration-id: rest.configuration-id
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configurations/{configuration-id}/revisions/{configuration-revision}
+      name: v1-configurations-configuration-id-revisions-configuration-revision
+      description: REST surface for v1-configurations-configuration-id-revisions-configuration-revision.
+      operations:
+      - method: GET
+        name: describeconfigurationrevision
+        description: Amazon MQ Describe Configuration Revision
+        call: amazon-mq.describeconfigurationrevision
+        with:
+          configuration-id: rest.configuration-id
+          configuration-revision: rest.configuration-revision
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/tags/{resource-arn}
+      name: v1-tags-resource-arn
+      description: REST surface for v1-tags-resource-arn.
+      operations:
+      - method: POST
+        name: createtags
+        description: Amazon MQ Create Tags
+        call: amazon-mq.createtags
+        with:
+          resource-arn: rest.resource-arn
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listtags
+        description: Amazon MQ List Tags
+        call: amazon-mq.listtags
+        with:
+          resource-arn: rest.resource-arn
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/tags/resource-arn-tagkeys
+      name: v1-tags-resource-arn-tagkeys
+      description: REST surface for v1-tags-resource-arn}#tagKeys.
+      operations:
+      - method: DELETE
+        name: deletetags
+        description: Amazon MQ Delete Tags
+        call: amazon-mq.deletetags
+        with:
+          resource-arn: rest.resource-arn
+          tagKeys: rest.tagKeys
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-mq-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AmazonMQ. One tool per consumed operation, routed inline through this capability's consumes
+      block.
+    tools:
+    - name: amazon-mq-describe-broker-engine
+      description: Amazon MQ Describe Broker Engine Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.describebrokerenginetypes
+      with:
+        engineType: tools.engineType
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-describe-broker-instance
+      description: Amazon MQ Describe Broker Instance Options
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.describebrokerinstanceoptions
+      with:
+        engineType: tools.engineType
+        hostInstanceType: tools.hostInstanceType
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        storageType: tools.storageType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-create-broker
+      description: Amazon MQ Create Broker
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-mq.createbroker
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-list-brokers
+      description: Amazon MQ List Brokers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.listbrokers
+      with:
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-delete-broker
+      description: Amazon MQ Delete Broker
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-mq.deletebroker
+      with:
+        broker-id: tools.broker-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-describe-broker
+      description: Amazon MQ Describe Broker
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.describebroker
+      with:
+        broker-id: tools.broker-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-update-broker
+      description: Amazon MQ Update Broker
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amazon-mq.updatebroker
+      with:
+        broker-id: tools.broker-id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-reboot-broker
+      description: Amazon MQ Reboot Broker
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-mq.rebootbroker
+      with:
+        broker-id: tools.broker-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-list-users
+      description: Amazon MQ List Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.listusers
+      with:
+        broker-id: tools.broker-id
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-create-user
+      description: Amazon MQ Create User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-mq.createuser
+      with:
+        broker-id: tools.broker-id
+        username: tools.username
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-delete-user
+      description: Amazon MQ Delete User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-mq.deleteuser
+      with:
+        broker-id: tools.broker-id
+        username: tools.username
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-describe-user
+      description: Amazon MQ Describe User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.describeuser
+      with:
+        broker-id: tools.broker-id
+        username: tools.username
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-update-user
+      description: Amazon MQ Update User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amazon-mq.updateuser
+      with:
+        broker-id: tools.broker-id
+        username: tools.username
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-create-configuration
+      description: Amazon MQ Create Configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-mq.createconfiguration
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-list-configurations
+      description: Amazon MQ List Configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.listconfigurations
+      with:
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-describe-configuration
+      description: Amazon MQ Describe Configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.describeconfiguration
+      with:
+        configuration-id: tools.configuration-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-update-configuration
+      description: Amazon MQ Update Configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amazon-mq.updateconfiguration
+      with:
+        configuration-id: tools.configuration-id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-list-configuration-revisions
+      description: Amazon MQ List Configuration Revisions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.listconfigurationrevisions
+      with:
+        configuration-id: tools.configuration-id
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-describe-configuration-revision
+      description: Amazon MQ Describe Configuration Revision
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.describeconfigurationrevision
+      with:
+        configuration-id: tools.configuration-id
+        configuration-revision: tools.configuration-revision
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-create-tags
+      description: Amazon MQ Create Tags
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-mq.createtags
+      with:
+        resource-arn: tools.resource-arn
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-list-tags
+      description: Amazon MQ List Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-mq.listtags
+      with:
+        resource-arn: tools.resource-arn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-mq-delete-tags
+      description: Amazon MQ Delete Tags
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-mq.deletetags
+      with:
+        resource-arn: tools.resource-arn
+        tagKeys: tools.tagKeys
+      outputParameters:
+      - type: object
+        mapping: $.
