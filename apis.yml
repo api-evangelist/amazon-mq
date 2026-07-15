@@ -40,6 +40,8 @@ apis:
       - type: FAQ
         url: https://aws.amazon.com/mq/faqs/
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-mq-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-mq-trust-center.yml
   - type: VulnerabilityDisclosure
