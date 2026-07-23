@@ -1,0 +1,1124 @@
+openapi: 3.0.0
+info:
+  version: 2017-11-27
+  x-release: v4
+  title: AmazonMQ Broker Engine Types Configurations API
+  description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: mq
+  x-aws-signingName: mq
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/mq-2017-11-27.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://mq.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AmazonMQ multi-region endpoint
+- url: https://mq.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AmazonMQ multi-region endpoint
+- url: http://mq.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AmazonMQ endpoint for China (Beijing) and China (Ningxia)
+- url: https://mq.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AmazonMQ endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Configurations
+paths:
+  /v1/configurations:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateConfiguration
+      description: Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateConfigurationResponse'
+              examples:
+                CreateConfiguration200Example:
+                  summary: Default CreateConfiguration 200 response
+                  x-microcks-default: true
+                  value:
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    AuthenticationStrategy: example-value
+                    Created: example-value
+                    Id: id-abc123
+                    LatestRevision: example-value
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+              examples:
+                CreateConfiguration480Example:
+                  summary: Default CreateConfiguration 480 response
+                  x-microcks-default: true
+                  value: {}
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+              examples:
+                CreateConfiguration481Example:
+                  summary: Default CreateConfiguration 481 response
+                  x-microcks-default: true
+                  value: {}
+        '482':
+          description: ConflictException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictException'
+              examples:
+                CreateConfiguration482Example:
+                  summary: Default CreateConfiguration 482 response
+                  x-microcks-default: true
+                  value: {}
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+              examples:
+                CreateConfiguration483Example:
+                  summary: Default CreateConfiguration 483 response
+                  x-microcks-default: true
+                  value: {}
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - engineType
+              - engineVersion
+              - name
+              properties:
+                authenticationStrategy:
+                  description: Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
+                  type: string
+                  enum:
+                  - SIMPLE
+                  - LDAP
+                engineType:
+                  description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
+                  type: string
+                  enum:
+                  - ACTIVEMQ
+                  - RABBITMQ
+                engineVersion:
+                  description: Required. The broker engine's version. For a list of supported engine versions, see <a href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html">Supported engines</a>.
+                  type: string
+                name:
+                  description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+                  type: string
+                tags:
+                  description: Create tags when creating the configuration.
+                  type: object
+                  additionalProperties:
+                    $ref: '#/components/schemas/__string'
+      summary: Amazon MQ Create Configuration
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Configurations
+    get:
+      operationId: ListConfigurations
+      description: Returns a list of all configurations.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConfigurationsResponse'
+              examples:
+                ListConfigurations200Example:
+                  summary: Default ListConfigurations 200 response
+                  x-microcks-default: true
+                  value:
+                    Configurations: example-value
+                    MaxResults: example-value
+                    NextToken: example-value
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+              examples:
+                ListConfigurations480Example:
+                  summary: Default ListConfigurations 480 response
+                  x-microcks-default: true
+                  value: {}
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+              examples:
+                ListConfigurations481Example:
+                  summary: Default ListConfigurations 481 response
+                  x-microcks-default: true
+                  value: {}
+        '482':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+              examples:
+                ListConfigurations482Example:
+                  summary: Default ListConfigurations 482 response
+                  x-microcks-default: true
+                  value: {}
+      parameters:
+      - name: maxResults
+        in: query
+        required: false
+        description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: nextToken
+        in: query
+        required: false
+        description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        schema:
+          type: string
+      summary: Amazon MQ List Configurations
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Configurations
+  /v1/configurations/{configuration-id}:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: DescribeConfiguration
+      description: Returns information about the specified configuration.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeConfigurationResponse'
+              examples:
+                DescribeConfiguration200Example:
+                  summary: Default DescribeConfiguration 200 response
+                  x-microcks-default: true
+                  value:
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    AuthenticationStrategy: example-value
+                    Created: example-value
+                    Description: Example description
+                    EngineType: STANDARD
+        '480':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+              examples:
+                DescribeConfiguration480Example:
+                  summary: Default DescribeConfiguration 480 response
+                  x-microcks-default: true
+                  value: {}
+        '481':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+              examples:
+                DescribeConfiguration481Example:
+                  summary: Default DescribeConfiguration 481 response
+                  x-microcks-default: true
+                  value: {}
+        '482':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+              examples:
+                DescribeConfiguration482Example:
+                  summary: Default DescribeConfiguration 482 response
+                  x-microcks-default: true
+                  value: {}
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+              examples:
+                DescribeConfiguration483Example:
+                  summary: Default DescribeConfiguration 483 response
+                  x-microcks-default: true
+                  value: {}
+      parameters:
+      - name: configuration-id
+        in: path
+        required: true
+        description: The unique ID that Amazon MQ generates for the configuration.
+        schema:
+          type: string
+      summary: Amazon MQ Describe Configuration
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Configurations
+    put:
+      operationId: UpdateConfiguration
+      description: Updates the specified configuration.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateConfigurationResponse'
+              examples:
+                UpdateConfiguration200Example:
+                  summary: Default UpdateConfiguration 200 response
+                  x-microcks-default: true
+                  value:
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    Created: example-value
+                    Id: id-abc123
+                    LatestRevision: example-value
+                    Name: example-resource
+        '480':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+              examples:
+                UpdateConfiguration480Example:
+                  summary: Default UpdateConfiguration 480 response
+                  x-microcks-default: true
+                  value: {}
+        '481':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+              examples:
+                UpdateConfiguration481Example:
+                  summary: Default UpdateConfiguration 481 response
+                  x-microcks-default: true
+                  value: {}
+        '482':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+              examples:
+                UpdateConfiguration482Example:
+                  summary: Default UpdateConfiguration 482 response
+                  x-microcks-default: true
+                  value: {}
+        '483':
+          description: ConflictException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictException'
+              examples:
+                UpdateConfiguration483Example:
+                  summary: Default UpdateConfiguration 483 response
+                  x-microcks-default: true
+                  value: {}
+        '484':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+              examples:
+                UpdateConfiguration484Example:
+                  summary: Default UpdateConfiguration 484 response
+                  x-microcks-default: true
+                  value: {}
+      parameters:
+      - name: configuration-id
+        in: path
+        required: true
+        description: The unique ID that Amazon MQ generates for the configuration.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  description: Required. The base64-encoded XML configuration.
+                  type: string
+                description:
+                  description: The description of the configuration.
+                  type: string
+      summary: Amazon MQ Update Configuration
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Configurations
+  /v1/configurations/{configuration-id}/revisions/{configuration-revision}:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: DescribeConfigurationRevision
+      description: Returns the specified configuration revision for the specified configuration.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeConfigurationRevisionResponse'
+              examples:
+                DescribeConfigurationRevision200Example:
+                  summary: Default DescribeConfigurationRevision 200 response
+                  x-microcks-default: true
+                  value:
+                    ConfigurationId: id-abc123
+                    Created: example-value
+                    Data: example-value
+                    Description: Example description
+        '480':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+              examples:
+                DescribeConfigurationRevision480Example:
+                  summary: Default DescribeConfigurationRevision 480 response
+                  x-microcks-default: true
+                  value: {}
+        '481':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+              examples:
+                DescribeConfigurationRevision481Example:
+                  summary: Default DescribeConfigurationRevision 481 response
+                  x-microcks-default: true
+                  value: {}
+        '482':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+              examples:
+                DescribeConfigurationRevision482Example:
+                  summary: Default DescribeConfigurationRevision 482 response
+                  x-microcks-default: true
+                  value: {}
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+              examples:
+                DescribeConfigurationRevision483Example:
+                  summary: Default DescribeConfigurationRevision 483 response
+                  x-microcks-default: true
+                  value: {}
+      parameters:
+      - name: configuration-id
+        in: path
+        required: true
+        description: The unique ID that Amazon MQ generates for the configuration.
+        schema:
+          type: string
+      - name: configuration-revision
+        in: path
+        required: true
+        description: The revision of the configuration.
+        schema:
+          type: string
+      summary: Amazon MQ Describe Configuration Revision
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Configurations
+  /v1/configurations/{configuration-id}/revisions:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: ListConfigurationRevisions
+      description: Returns a list of all revisions for the specified configuration.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConfigurationRevisionsResponse'
+              examples:
+                ListConfigurationRevisions200Example:
+                  summary: Default ListConfigurationRevisions 200 response
+                  x-microcks-default: true
+                  value:
+                    ConfigurationId: id-abc123
+                    MaxResults: example-value
+                    NextToken: example-value
+                    Revisions: example-value
+        '480':
+          description: NotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundException'
+              examples:
+                ListConfigurationRevisions480Example:
+                  summary: Default ListConfigurationRevisions 480 response
+                  x-microcks-default: true
+                  value: {}
+        '481':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+              examples:
+                ListConfigurationRevisions481Example:
+                  summary: Default ListConfigurationRevisions 481 response
+                  x-microcks-default: true
+                  value: {}
+        '482':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+              examples:
+                ListConfigurationRevisions482Example:
+                  summary: Default ListConfigurationRevisions 482 response
+                  x-microcks-default: true
+                  value: {}
+        '483':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+              examples:
+                ListConfigurationRevisions483Example:
+                  summary: Default ListConfigurationRevisions 483 response
+                  x-microcks-default: true
+                  value: {}
+      parameters:
+      - name: configuration-id
+        in: path
+        required: true
+        description: The unique ID that Amazon MQ generates for the configuration.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        required: false
+        description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: nextToken
+        in: query
+        required: false
+        description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        schema:
+          type: string
+      summary: Amazon MQ List Configuration Revisions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Configurations
+components:
+  schemas:
+    __string:
+      type: string
+    __timestampIso8601:
+      type: string
+      format: date-time
+    SanitizationWarningReason:
+      type: string
+      enum:
+      - DISALLOWED_ELEMENT_REMOVED
+      - DISALLOWED_ATTRIBUTE_REMOVED
+      - INVALID_ATTRIBUTE_VALUE_REMOVED
+      description: The reason for which the XML elements or attributes were sanitized.
+    DescribeConfigurationRevisionResponse:
+      type: object
+      properties:
+        ConfigurationId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: configurationId
+            description: Required. The unique ID that Amazon MQ generates for the configuration.
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration.
+        Data:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: data
+            description: Required. The base64-encoded XML configuration.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: description
+            description: The description of the configuration.
+    BadRequestException: {}
+    ConfigurationRevision:
+      type: object
+      required:
+      - Revision
+      - Created
+      properties:
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration revision.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: description
+            description: The description of the configuration revision.
+        Revision:
+          allOf:
+          - $ref: '#/components/schemas/__integer'
+          - xml:
+              name: revision
+            description: Required. The revision number of the configuration.
+      description: Returns information about the specified configuration revision.
+    NotFoundException: {}
+    __mapOf__string:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/__string'
+    __listOfSanitizationWarning:
+      type: array
+      items:
+        $ref: '#/components/schemas/SanitizationWarning'
+    Configuration:
+      type: object
+      required:
+      - Description
+      - EngineVersion
+      - LatestRevision
+      - AuthenticationStrategy
+      - EngineType
+      - Id
+      - Arn
+      - Name
+      - Created
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: arn
+            description: Required. The ARN of the configuration.
+        AuthenticationStrategy:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticationStrategy'
+          - xml:
+              name: authenticationStrategy
+            description: Optional. The authentication strategy associated with the configuration. The default is SIMPLE.
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration revision.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: description
+            description: Required. The description of the configuration.
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - xml:
+              name: engineType
+            description: Required. The type of broker engine. Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.
+        EngineVersion:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: engineVersion
+            description: Required. The broker engine's version. For a list of supported engine versions, see, <a href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html">Supported engines</a>.
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: id
+            description: Required. The unique ID that Amazon MQ generates for the configuration.
+        LatestRevision:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationRevision'
+          - xml:
+              name: latestRevision
+            description: Required. The latest revision of the configuration.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/__mapOf__string'
+          - xml:
+              name: tags
+            description: The list of all tags associated with this configuration.
+      description: Returns information about all configurations.
+    ListConfigurationRevisionsResponse:
+      type: object
+      properties:
+        ConfigurationId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: configurationId
+            description: The unique ID that Amazon MQ generates for the configuration.
+        MaxResults:
+          allOf:
+          - $ref: '#/components/schemas/__integer'
+          - xml:
+              name: maxResults
+            description: The maximum number of configuration revisions that can be returned per page (20 by default). This value must be an integer from 5 to 100.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        Revisions:
+          allOf:
+          - $ref: '#/components/schemas/__listOfConfigurationRevision'
+          - xml:
+              name: revisions
+            description: The list of all revisions for the specified configuration.
+    __listOfConfiguration:
+      type: array
+      items:
+        $ref: '#/components/schemas/Configuration'
+    CreateConfigurationResponse:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: arn
+            description: Required. The Amazon Resource Name (ARN) of the configuration.
+        AuthenticationStrategy:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticationStrategy'
+          - xml:
+              name: authenticationStrategy
+            description: Optional. The authentication strategy associated with the configuration. The default is SIMPLE.
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration.
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: id
+            description: Required. The unique ID that Amazon MQ generates for the configuration.
+        LatestRevision:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationRevision'
+          - xml:
+              name: latestRevision
+            description: The latest revision of the configuration.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+    SanitizationWarning:
+      type: object
+      required:
+      - Reason
+      properties:
+        AttributeName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: attributeName
+            description: The name of the XML attribute that has been sanitized.
+        ElementName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: elementName
+            description: The name of the XML element that has been sanitized.
+        Reason:
+          allOf:
+          - $ref: '#/components/schemas/SanitizationWarningReason'
+          - xml:
+              name: reason
+            description: Required. The reason for which the XML elements or attributes were sanitized.
+      description: Returns information about the XML element or attribute that was sanitized in the configuration.
+    ForbiddenException: {}
+    InternalServerErrorException: {}
+    ListConfigurationsResponse:
+      type: object
+      properties:
+        Configurations:
+          allOf:
+          - $ref: '#/components/schemas/__listOfConfiguration'
+          - xml:
+              name: configurations
+            description: The list of all revisions for the specified configuration.
+        MaxResults:
+          allOf:
+          - $ref: '#/components/schemas/__integer'
+          - xml:
+              name: maxResults
+            description: The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    DescribeConfigurationResponse:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: arn
+            description: Required. The ARN of the configuration.
+        AuthenticationStrategy:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticationStrategy'
+          - xml:
+              name: authenticationStrategy
+            description: Optional. The authentication strategy associated with the configuration. The default is SIMPLE.
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration revision.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: description
+            description: Required. The description of the configuration.
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - xml:
+              name: engineType
+            description: Required. The type of broker engine. Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.
+        EngineVersion:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: engineVersion
+            description: Required. The broker engine's version. For a list of supported engine versions, see, <a href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html">Supported engines</a>.
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: id
+            description: Required. The unique ID that Amazon MQ generates for the configuration.
+        LatestRevision:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationRevision'
+          - xml:
+              name: latestRevision
+            description: Required. The latest revision of the configuration.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/__mapOf__string'
+          - xml:
+              name: tags
+            description: The list of all tags associated with this configuration.
+    UpdateConfigurationResponse:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: arn
+            description: Required. The Amazon Resource Name (ARN) of the configuration.
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration.
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: id
+            description: Required. The unique ID that Amazon MQ generates for the configuration.
+        LatestRevision:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationRevision'
+          - xml:
+              name: latestRevision
+            description: The latest revision of the configuration.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+        Warnings:
+          allOf:
+          - $ref: '#/components/schemas/__listOfSanitizationWarning'
+          - xml:
+              name: warnings
+            description: The list of the first 20 warnings about the configuration XML elements or attributes that were sanitized.
+    ConflictException: {}
+    __integer:
+      type: integer
+    __listOfConfigurationRevision:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConfigurationRevision'
+    EngineType:
+      type: string
+      enum:
+      - ACTIVEMQ
+      - RABBITMQ
+      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
+    AuthenticationStrategy:
+      type: string
+      enum:
+      - SIMPLE
+      - LDAP
+      description: Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/mq/
+x-hasEquivalentPaths: true

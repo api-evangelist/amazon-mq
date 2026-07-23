@@ -1,0 +1,330 @@
+openapi: 3.0.0
+info:
+  version: 2017-11-27
+  x-release: v4
+  title: AmazonMQ Broker Engine Types API
+  description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: mq
+  x-aws-signingName: mq
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/mq-2017-11-27.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://mq.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AmazonMQ multi-region endpoint
+- url: https://mq.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AmazonMQ multi-region endpoint
+- url: http://mq.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AmazonMQ endpoint for China (Beijing) and China (Ningxia)
+- url: https://mq.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AmazonMQ endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Broker Engine Types
+paths:
+  /v1/broker-engine-types:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: DescribeBrokerEngineTypes
+      description: Describe available engine types and versions.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeBrokerEngineTypesResponse'
+              examples:
+                DescribeBrokerEngineTypes200Example:
+                  summary: Default DescribeBrokerEngineTypes 200 response
+                  x-microcks-default: true
+                  value:
+                    BrokerEngineTypes: STANDARD
+                    MaxResults: example-value
+                    NextToken: example-value
+        '480':
+          description: BadRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestException'
+              examples:
+                DescribeBrokerEngineTypes480Example:
+                  summary: Default DescribeBrokerEngineTypes 480 response
+                  x-microcks-default: true
+                  value: {}
+        '481':
+          description: InternalServerErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorException'
+              examples:
+                DescribeBrokerEngineTypes481Example:
+                  summary: Default DescribeBrokerEngineTypes 481 response
+                  x-microcks-default: true
+                  value: {}
+        '482':
+          description: ForbiddenException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenException'
+              examples:
+                DescribeBrokerEngineTypes482Example:
+                  summary: Default DescribeBrokerEngineTypes 482 response
+                  x-microcks-default: true
+                  value: {}
+      parameters:
+      - name: engineType
+        in: query
+        required: false
+        description: Filter response by engine type.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        required: false
+        description: The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: nextToken
+        in: query
+        required: false
+        description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        schema:
+          type: string
+      summary: Amazon MQ Describe Broker Engine Types
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Broker Engine Types
+components:
+  schemas:
+    __string:
+      type: string
+    __listOfBrokerEngineType:
+      type: array
+      items:
+        $ref: '#/components/schemas/BrokerEngineType'
+    ForbiddenException: {}
+    EngineVersion:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Id for the version.
+      description: Id of the engine version.
+    InternalServerErrorException: {}
+    __integerMin5Max100:
+      type: integer
+      minimum: 5
+      maximum: 100
+    BadRequestException: {}
+    EngineType:
+      type: string
+      enum:
+      - ACTIVEMQ
+      - RABBITMQ
+      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
+    DescribeBrokerEngineTypesResponse:
+      type: object
+      properties:
+        BrokerEngineTypes:
+          allOf:
+          - $ref: '#/components/schemas/__listOfBrokerEngineType'
+          - xml:
+              name: brokerEngineTypes
+            description: List of available engine types and versions.
+        MaxResults:
+          allOf:
+          - $ref: '#/components/schemas/__integerMin5Max100'
+          - xml:
+              name: maxResults
+            description: Required. The maximum number of engine types that can be returned per page (20 by default). This value must be an integer from 5 to 100.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    __listOfEngineVersion:
+      type: array
+      items:
+        $ref: '#/components/schemas/EngineVersion'
+    BrokerEngineType:
+      type: object
+      properties:
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - xml:
+              name: engineType
+            description: The broker's engine type.
+        EngineVersions:
+          allOf:
+          - $ref: '#/components/schemas/__listOfEngineVersion'
+          - xml:
+              name: engineVersions
+            description: The list of engine versions.
+      description: Types of broker engines.
+  parameters:
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/mq/
+x-hasEquivalentPaths: true
