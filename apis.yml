@@ -5,7 +5,20 @@ description: >-
   operate message brokers in the cloud, enabling you to migrate to a message broker without writing the code that
   typically enables interoperability with existing applications.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-mq.png
 tags:
   - AWS
   - Broadcasting
@@ -16,30 +29,100 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: amazon-mq:mq-api
-    name: Amazon MQ API
-    description: >-
-      Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and
-      operate message brokers in the cloud, enabling you to migrate to a message broker without writing the code that
-      typically enables interoperability with existing applications.
-    humanURL: https://aws.amazon.com/mq/
-    baseURL: http://mq.{region}.amazonaws.com
-    tags:
-      - Broadcasting
-      - Media Processing
-      - Media
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/mq/
-      - type: OpenAPI
-        url: openapi/amazon-mq-openapi-original.yml
-      - type: GettingStarted
-        url: https://aws.amazon.com/mq/getting-started/
-      - type: Pricing
-        url: https://aws.amazon.com/mq/pricing/
-      - type: FAQ
-        url: https://aws.amazon.com/mq/faqs/
+- aid: amazon-mq:amazon-mq-broker-engine-types-api
+  name: Amazon MQ Broker Engine Types API
+  description: The Broker Engine Types API from Amazon MQ — 1 operation(s) for broker engine types.
+  humanURL: https://aws.amazon.com/mq/
+  baseURL: http://mq.{region}.amazonaws.com
+  tags:
+  - Broker Engine Types
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-broker-engine-types-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/mq/
+  - type: GettingStarted
+    url: https://aws.amazon.com/mq/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/mq/faqs/
+- aid: amazon-mq:amazon-mq-broker-instance-options-api
+  name: Amazon MQ Broker Instance Options API
+  description: >-
+    The Broker Instance Options API from Amazon MQ — 1 operation(s) for broker instance options.
+  humanURL: https://aws.amazon.com/mq/
+  baseURL: http://mq.{region}.amazonaws.com
+  tags:
+  - Broker Instance Options
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-broker-instance-options-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/mq/
+  - type: GettingStarted
+    url: https://aws.amazon.com/mq/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/mq/faqs/
+- aid: amazon-mq:amazon-mq-brokers-api
+  name: Amazon MQ Brokers API
+  description: The Brokers API from Amazon MQ — 5 operation(s) for brokers.
+  humanURL: https://aws.amazon.com/mq/
+  baseURL: http://mq.{region}.amazonaws.com
+  tags:
+  - Brokers
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-brokers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/mq/
+  - type: GettingStarted
+    url: https://aws.amazon.com/mq/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/mq/faqs/
+- aid: amazon-mq:amazon-mq-configurations-api
+  name: Amazon MQ Configurations API
+  description: The Configurations API from Amazon MQ — 4 operation(s) for configurations.
+  humanURL: https://aws.amazon.com/mq/
+  baseURL: http://mq.{region}.amazonaws.com
+  tags:
+  - Configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/mq/
+  - type: GettingStarted
+    url: https://aws.amazon.com/mq/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/mq/faqs/
+- aid: amazon-mq:amazon-mq-tags-api
+  name: Amazon MQ Tags API
+  description: The Tags API from Amazon MQ — 2 operation(s) for tags.
+  humanURL: https://aws.amazon.com/mq/
+  baseURL: http://mq.{region}.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/mq/
+  - type: GettingStarted
+    url: https://aws.amazon.com/mq/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/mq/faqs/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/amazon-mq/overview
   - type: AgenticAccess
     url: agentic-access/amazon-mq-agentic-access.yml
   - type: TrustCenter
