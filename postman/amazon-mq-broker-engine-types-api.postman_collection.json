@@ -1,0 +1,485 @@
+{
+  "info": {
+    "_postman_id": "23766019-fc92-4133-ba01-7c464a1c01bb",
+    "name": "AmazonMQ Broker Engine Types API",
+    "description": "Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:39:59.000Z",
+    "updatedAt": "2026-07-28T10:39:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-23766019-fc92-4133-ba01-7c464a1c01bb"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "broker-engine-types",
+          "item": [
+            {
+              "name": "Amazon MQ Describe Broker Engine Types",
+              "id": "f40fa832-3f21-40a8-912f-8d3c6d0f1761",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/broker-engine-types?engineType=<string>&maxResults=<integer>&nextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "broker-engine-types"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter response by engine type.",
+                      "key": "engineType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Describe available engine types and versions."
+              },
+              "response": [
+                {
+                  "id": "f97704b3-62e0-46c5-a5c2-a6245d952e7f",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/broker-engine-types?engineType=<string>&maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "broker-engine-types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter response by engine type.",
+                          "key": "engineType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"BrokerEngineTypes\": [\n    {\n      \"EngineType\": \"RABBITMQ\",\n      \"EngineVersions\": [\n        {\n          \"Name\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"EngineType\": \"ACTIVEMQ\",\n      \"EngineVersions\": [\n        {\n          \"Name\": \"<string>\"\n        },\n        {\n          \"Name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T10:40:00.000Z",
+                  "updatedAt": "2026-07-28T10:40:00.000Z",
+                  "uid": "35240-f97704b3-62e0-46c5-a5c2-a6245d952e7f"
+                },
+                {
+                  "id": "d06e601c-15bd-4ee7-b656-166c3a6261a0",
+                  "name": "BadRequestException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/broker-engine-types?engineType=<string>&maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "broker-engine-types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter response by engine type.",
+                          "key": "engineType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:40:00.000Z",
+                  "updatedAt": "2026-07-28T10:40:00.000Z",
+                  "uid": "35240-d06e601c-15bd-4ee7-b656-166c3a6261a0"
+                },
+                {
+                  "id": "c713a3c5-14d2-4688-951c-fa3ce20c76df",
+                  "name": "InternalServerErrorException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/broker-engine-types?engineType=<string>&maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "broker-engine-types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter response by engine type.",
+                          "key": "engineType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:40:00.000Z",
+                  "updatedAt": "2026-07-28T10:40:00.000Z",
+                  "uid": "35240-c713a3c5-14d2-4688-951c-fa3ce20c76df"
+                },
+                {
+                  "id": "3e9907b0-fd7a-4e6d-8ae8-48faf7b7ff32",
+                  "name": "ForbiddenException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/broker-engine-types?engineType=<string>&maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "broker-engine-types"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter response by engine type.",
+                          "key": "engineType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:40:00.000Z",
+                  "updatedAt": "2026-07-28T10:40:00.000Z",
+                  "uid": "35240-3e9907b0-fd7a-4e6d-8ae8-48faf7b7ff32"
+                }
+              ],
+              "createdAt": "2026-07-28T10:40:00.000Z",
+              "updatedAt": "2026-07-28T10:40:00.000Z",
+              "uid": "35240-f40fa832-3f21-40a8-912f-8d3c6d0f1761"
+            }
+          ],
+          "id": "6a600a19-5d9f-443d-897d-f8f81c339a98",
+          "createdAt": "2026-07-28T10:40:00.000Z",
+          "updatedAt": "2026-07-28T10:40:00.000Z",
+          "uid": "35240-6a600a19-5d9f-443d-897d-f8f81c339a98"
+        }
+      ],
+      "id": "56533f71-5954-45fb-99f5-4f3d102e3d85",
+      "createdAt": "2026-07-28T10:40:00.000Z",
+      "updatedAt": "2026-07-28T10:40:00.000Z",
+      "uid": "35240-56533f71-5954-45fb-99f5-4f3d102e3d85"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://mq.{{region}}.amazonaws.com"
+    }
+  ]
+}

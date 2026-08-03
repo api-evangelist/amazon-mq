@@ -1,0 +1,22 @@
+{
+  "provider": "amazon-mq",
+  "sources": [
+    "amazon-mq-broker-engine-types-api-openapi.yml",
+    "amazon-mq-broker-instance-options-api-openapi.yml",
+    "amazon-mq-brokers-api-openapi.yml",
+    "amazon-mq-configurations-api-openapi.yml",
+    "amazon-mq-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-mq-broker-engine-types-api-openapi.yml",
+    "amazon-mq-broker-instance-options-api-openapi.yml",
+    "amazon-mq-brokers-api-openapi.yml",
+    "amazon-mq-configurations-api-openapi.yml",
+    "amazon-mq-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
