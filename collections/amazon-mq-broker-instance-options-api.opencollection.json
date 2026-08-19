@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AmazonMQ Broker Engine Types Broker Instance Options API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Broker Instance Options",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon MQ Describe Broker Instance Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://mq.{region}.amazonaws.com/v1/broker-instance-options",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "engineType",
+                "value": "",
+                "type": "query",
+                "description": "Filter response by engine type."
+              },
+              {
+                "name": "hostInstanceType",
+                "value": "",
+                "type": "query",
+                "description": "Filter response by host instance type."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+              },
+              {
+                "name": "storageType",
+                "value": "",
+                "type": "query",
+                "description": "Filter response by storage type."
+              }
+            ]
+          },
+          "docs": "Describe available broker instance options."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

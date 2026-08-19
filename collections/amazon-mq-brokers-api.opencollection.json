@@ -1,0 +1,627 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AmazonMQ Broker Engine Types Brokers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brokers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon MQ List Brokers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+              },
+              {
+                "name": "MaxResults",
+                "value": "",
+                "type": "query",
+                "description": "Pagination limit"
+              },
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              }
+            ]
+          },
+          "docs": "Returns a list of all brokers."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Create Broker",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<p>Creates a broker. Note: This API is asynchronous.</p> <p>To create a broker, you must either use the AmazonMQFullAccess IAM policy or include the following EC2 permissions in your IAM policy.</p> <ul><li><p>ec2:CreateNetworkInterface</p> <p>This permission is required to allow Amazon MQ to create an elastic network interface (ENI) on behalf of your account.</p></li> <li><p>ec2:CreateNetworkInterfacePermission</p> <p>This permission is required to attach the ENI to the broker instance.</p></li"
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Describe User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id/users/:username",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+              }
+            ]
+          },
+          "docs": "Returns information about an ActiveMQ user."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id/users/:username",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an ActiveMQ user."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id/users/:username",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the information for an ActiveMQ user."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id/users/:username",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long."
+              }
+            ]
+          },
+          "docs": "Deletes an ActiveMQ user."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Describe Broker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              }
+            ]
+          },
+          "docs": "Returns information about the specified broker."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Update Broker",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a pending configuration change to a broker."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Delete Broker",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              }
+            ]
+          },
+          "docs": "Deletes a broker. Note: This API is asynchronous."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id/users",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty."
+              }
+            ]
+          },
+          "docs": "Returns a list of all ActiveMQ users."
+        },
+        {
+          "info": {
+            "name": "Amazon MQ Reboot Broker",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://mq.{region}.amazonaws.com/v1/brokers/:broker-id/reboot",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "broker-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID that Amazon MQ generates for the broker."
+              }
+            ]
+          },
+          "docs": "Reboots a broker. Note: This API is asynchronous."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
