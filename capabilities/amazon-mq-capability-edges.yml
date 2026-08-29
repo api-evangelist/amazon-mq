@@ -1,0 +1,26 @@
+slug: amazon-mq
+provider: Amazon MQ
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Brokers
+  spec_file: amazon-mq-brokers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: CreateBroker, DeleteBroker, UpdateBroker, RebootBroker ... "managed message broker service
+    ... set up and operate message brokers in the cloud"
+  reason: Full lifecycle provisioning and operation of managed message-broker instances (create, update,
+    reboot, delete) plus broker user administration. This is cloud/middleware infrastructure management,
+    an IT capability, not any media or industry capability.

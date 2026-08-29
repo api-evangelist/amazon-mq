@@ -133,6 +133,9 @@ apis:
   - type: FAQ
     url: https://aws.amazon.com/mq/faqs/
 common:
+  - type: CapabilityMap
+    url: capabilities/amazon-mq-capability-edges.yml
+    name: Amazon MQ Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-mq/overview
   - type: AgenticAccess
