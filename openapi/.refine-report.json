@@ -1,11 +1,8 @@
 {
   "provider": "amazon-mq",
   "sources": [
-    "amazon-mq-broker-engine-types-api-openapi.yml",
-    "amazon-mq-broker-instance-options-api-openapi.yml",
-    "amazon-mq-brokers-api-openapi.yml",
-    "amazon-mq-configurations-api-openapi.yml",
-    "amazon-mq-tags-api-openapi.yml"
+    "_original/amazon-mq-openapi-original.yml",
+    "_original/openapi.yml"
   ],
   "outputs": [
     "amazon-mq-broker-engine-types-api-openapi.yml",
@@ -17,6 +14,43 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-mq-openapi-original.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "amazon-mq-openapi-original.yml: tagged paths POST /v1/brokers -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/brokers -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths POST /v1/configurations -> Configurations",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/configurations -> Configurations",
+    "amazon-mq-openapi-original.yml: tagged paths POST /v1/tags/{resource-arn} -> Tags",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/tags/{resource-arn} -> Tags",
+    "amazon-mq-openapi-original.yml: tagged paths POST /v1/brokers/{broker-id}/users/{username} -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths DELETE /v1/brokers/{broker-id}/users/{username} -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/brokers/{broker-id}/users/{username} -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths PUT /v1/brokers/{broker-id}/users/{username} -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths DELETE /v1/brokers/{broker-id} -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/brokers/{broker-id} -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths PUT /v1/brokers/{broker-id} -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths DELETE /v1/tags/{resource-arn}#tagKeys -> Tags",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/broker-engine-types -> Broker Engine Types",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/broker-instance-options -> Broker Instance Options",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/configurations/{configuration-id} -> Configurations",
+    "amazon-mq-openapi-original.yml: tagged paths PUT /v1/configurations/{configuration-id} -> Configurations",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/configurations/{configuration-id}/revisions/{configuration-revision} -> Configurations",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/configurations/{configuration-id}/revisions -> Configurations",
+    "amazon-mq-openapi-original.yml: tagged paths GET /v1/brokers/{broker-id}/users -> Brokers",
+    "amazon-mq-openapi-original.yml: tagged paths POST /v1/brokers/{broker-id}/reboot -> Brokers",
+    "amazon-mq-openapi-original.yml: declared missing tag: Broker Engine Types",
+    "amazon-mq-openapi-original.yml: declared missing tag: Broker Instance Options",
+    "amazon-mq-openapi-original.yml: declared missing tag: Brokers",
+    "amazon-mq-openapi-original.yml: declared missing tag: Configurations",
+    "amazon-mq-openapi-original.yml: declared missing tag: Tags",
+    "openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "amazon-mq-broker-engine-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-mq-broker-instance-options-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-mq-brokers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-mq-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-mq-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

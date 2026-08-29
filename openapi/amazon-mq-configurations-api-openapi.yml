@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 2017-11-27
   x-release: v4
-  title: AmazonMQ Broker Engine Types Configurations API
+  title: AmazonMQ Configurations API
   description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/mq-2017-11-27.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -681,19 +682,14 @@ paths:
       - Configurations
 components:
   schemas:
-    __string:
-      type: string
-    __timestampIso8601:
-      type: string
-      format: date-time
-    SanitizationWarningReason:
-      type: string
-      enum:
-      - DISALLOWED_ELEMENT_REMOVED
-      - DISALLOWED_ATTRIBUTE_REMOVED
-      - INVALID_ATTRIBUTE_VALUE_REMOVED
-      description: The reason for which the XML elements or attributes were sanitized.
-    DescribeConfigurationRevisionResponse:
+    ConflictException: {}
+    __mapOf__string:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/__string'
+    __integer:
+      type: integer
+    ListConfigurationRevisionsResponse:
       type: object
       properties:
         ConfigurationId:
@@ -701,60 +697,35 @@ components:
           - $ref: '#/components/schemas/__string'
           - xml:
               name: configurationId
-            description: Required. The unique ID that Amazon MQ generates for the configuration.
-        Created:
-          allOf:
-          - $ref: '#/components/schemas/__timestampIso8601'
-          - xml:
-              name: created
-            description: Required. The date and time of the configuration.
-        Data:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: data
-            description: Required. The base64-encoded XML configuration.
-        Description:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: description
-            description: The description of the configuration.
-    BadRequestException: {}
-    ConfigurationRevision:
-      type: object
-      required:
-      - Revision
-      - Created
-      properties:
-        Created:
-          allOf:
-          - $ref: '#/components/schemas/__timestampIso8601'
-          - xml:
-              name: created
-            description: Required. The date and time of the configuration revision.
-        Description:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: description
-            description: The description of the configuration revision.
-        Revision:
+            description: The unique ID that Amazon MQ generates for the configuration.
+        MaxResults:
           allOf:
           - $ref: '#/components/schemas/__integer'
           - xml:
-              name: revision
-            description: Required. The revision number of the configuration.
-      description: Returns information about the specified configuration revision.
-    NotFoundException: {}
-    __mapOf__string:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/__string'
-    __listOfSanitizationWarning:
+              name: maxResults
+            description: The maximum number of configuration revisions that can be returned per page (20 by default). This value must be an integer from 5 to 100.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        Revisions:
+          allOf:
+          - $ref: '#/components/schemas/__listOfConfigurationRevision'
+          - xml:
+              name: revisions
+            description: The list of all revisions for the specified configuration.
+    __listOfConfigurationRevision:
       type: array
       items:
-        $ref: '#/components/schemas/SanitizationWarning'
+        $ref: '#/components/schemas/ConfigurationRevision'
+    EngineType:
+      type: string
+      enum:
+      - ACTIVEMQ
+      - RABBITMQ
+      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
     Configuration:
       type: object
       required:
@@ -829,7 +800,54 @@ components:
               name: tags
             description: The list of all tags associated with this configuration.
       description: Returns information about all configurations.
-    ListConfigurationRevisionsResponse:
+    __timestampIso8601:
+      type: string
+      format: date-time
+    UpdateConfigurationResponse:
+      type: object
+      properties:
+        Arn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: arn
+            description: Required. The Amazon Resource Name (ARN) of the configuration.
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration.
+        Id:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: id
+            description: Required. The unique ID that Amazon MQ generates for the configuration.
+        LatestRevision:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationRevision'
+          - xml:
+              name: latestRevision
+            description: The latest revision of the configuration.
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+        Warnings:
+          allOf:
+          - $ref: '#/components/schemas/__listOfSanitizationWarning'
+          - xml:
+              name: warnings
+            description: The list of the first 20 warnings about the configuration XML elements or attributes that were sanitized.
+    InternalServerErrorException: {}
+    __listOfSanitizationWarning:
+      type: array
+      items:
+        $ref: '#/components/schemas/SanitizationWarning'
+    DescribeConfigurationRevisionResponse:
       type: object
       properties:
         ConfigurationId:
@@ -837,29 +855,25 @@ components:
           - $ref: '#/components/schemas/__string'
           - xml:
               name: configurationId
-            description: The unique ID that Amazon MQ generates for the configuration.
-        MaxResults:
+            description: Required. The unique ID that Amazon MQ generates for the configuration.
+        Created:
           allOf:
-          - $ref: '#/components/schemas/__integer'
+          - $ref: '#/components/schemas/__timestampIso8601'
           - xml:
-              name: maxResults
-            description: The maximum number of configuration revisions that can be returned per page (20 by default). This value must be an integer from 5 to 100.
-        NextToken:
+              name: created
+            description: Required. The date and time of the configuration.
+        Data:
           allOf:
           - $ref: '#/components/schemas/__string'
           - xml:
-              name: nextToken
-            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
-        Revisions:
+              name: data
+            description: Required. The base64-encoded XML configuration.
+        Description:
           allOf:
-          - $ref: '#/components/schemas/__listOfConfigurationRevision'
+          - $ref: '#/components/schemas/__string'
           - xml:
-              name: revisions
-            description: The list of all revisions for the specified configuration.
-    __listOfConfiguration:
-      type: array
-      items:
-        $ref: '#/components/schemas/Configuration'
+              name: description
+            description: The description of the configuration.
     CreateConfigurationResponse:
       type: object
       properties:
@@ -899,53 +913,40 @@ components:
           - xml:
               name: name
             description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
-    SanitizationWarning:
+    ConfigurationRevision:
       type: object
       required:
-      - Reason
+      - Revision
+      - Created
       properties:
-        AttributeName:
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: Required. The date and time of the configuration revision.
+        Description:
           allOf:
           - $ref: '#/components/schemas/__string'
           - xml:
-              name: attributeName
-            description: The name of the XML attribute that has been sanitized.
-        ElementName:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: elementName
-            description: The name of the XML element that has been sanitized.
-        Reason:
-          allOf:
-          - $ref: '#/components/schemas/SanitizationWarningReason'
-          - xml:
-              name: reason
-            description: Required. The reason for which the XML elements or attributes were sanitized.
-      description: Returns information about the XML element or attribute that was sanitized in the configuration.
-    ForbiddenException: {}
-    InternalServerErrorException: {}
-    ListConfigurationsResponse:
-      type: object
-      properties:
-        Configurations:
-          allOf:
-          - $ref: '#/components/schemas/__listOfConfiguration'
-          - xml:
-              name: configurations
-            description: The list of all revisions for the specified configuration.
-        MaxResults:
+              name: description
+            description: The description of the configuration revision.
+        Revision:
           allOf:
           - $ref: '#/components/schemas/__integer'
           - xml:
-              name: maxResults
-            description: The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: nextToken
-            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+              name: revision
+            description: Required. The revision number of the configuration.
+      description: Returns information about the specified configuration revision.
+    ForbiddenException: {}
+    SanitizationWarningReason:
+      type: string
+      enum:
+      - DISALLOWED_ELEMENT_REMOVED
+      - DISALLOWED_ATTRIBUTE_REMOVED
+      - INVALID_ATTRIBUTE_VALUE_REMOVED
+      description: The reason for which the XML elements or attributes were sanitized.
+    NotFoundException: {}
     DescribeConfigurationResponse:
       type: object
       properties:
@@ -1009,73 +1010,73 @@ components:
           - xml:
               name: tags
             description: The list of all tags associated with this configuration.
-    UpdateConfigurationResponse:
-      type: object
-      properties:
-        Arn:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: arn
-            description: Required. The Amazon Resource Name (ARN) of the configuration.
-        Created:
-          allOf:
-          - $ref: '#/components/schemas/__timestampIso8601'
-          - xml:
-              name: created
-            description: Required. The date and time of the configuration.
-        Id:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: id
-            description: Required. The unique ID that Amazon MQ generates for the configuration.
-        LatestRevision:
-          allOf:
-          - $ref: '#/components/schemas/ConfigurationRevision'
-          - xml:
-              name: latestRevision
-            description: The latest revision of the configuration.
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: name
-            description: Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
-        Warnings:
-          allOf:
-          - $ref: '#/components/schemas/__listOfSanitizationWarning'
-          - xml:
-              name: warnings
-            description: The list of the first 20 warnings about the configuration XML elements or attributes that were sanitized.
-    ConflictException: {}
-    __integer:
-      type: integer
-    __listOfConfigurationRevision:
-      type: array
-      items:
-        $ref: '#/components/schemas/ConfigurationRevision'
-    EngineType:
-      type: string
-      enum:
-      - ACTIVEMQ
-      - RABBITMQ
-      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
     AuthenticationStrategy:
       type: string
       enum:
       - SIMPLE
       - LDAP
       description: Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
+    ListConfigurationsResponse:
+      type: object
+      properties:
+        Configurations:
+          allOf:
+          - $ref: '#/components/schemas/__listOfConfiguration'
+          - xml:
+              name: configurations
+            description: The list of all revisions for the specified configuration.
+        MaxResults:
+          allOf:
+          - $ref: '#/components/schemas/__integer'
+          - xml:
+              name: maxResults
+            description: The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    BadRequestException: {}
+    SanitizationWarning:
+      type: object
+      required:
+      - Reason
+      properties:
+        AttributeName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: attributeName
+            description: The name of the XML attribute that has been sanitized.
+        ElementName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: elementName
+            description: The name of the XML element that has been sanitized.
+        Reason:
+          allOf:
+          - $ref: '#/components/schemas/SanitizationWarningReason'
+          - xml:
+              name: reason
+            description: Required. The reason for which the XML elements or attributes were sanitized.
+      description: Returns information about the XML element or attribute that was sanitized in the configuration.
+    __listOfConfiguration:
+      type: array
+      items:
+        $ref: '#/components/schemas/Configuration'
+    __string:
+      type: string
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -1086,8 +1087,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -1098,14 +1105,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
