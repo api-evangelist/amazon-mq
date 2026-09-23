@@ -215,57 +215,11 @@ paths:
       tags:
       - Broker Instance Options
 components:
-  parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    EngineType:
-      type: string
-      enum:
-      - ACTIVEMQ
-      - RABBITMQ
-      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
-    InternalServerErrorException: {}
+    __integerMin5Max100:
+      type: integer
+      minimum: 5
+      maximum: 100
     BrokerInstanceOption:
       type: object
       properties:
@@ -306,22 +260,26 @@ components:
               name: supportedEngineVersions
             description: The list of supported engine versions.
       description: Option for host instance type.
-    __listOfAvailabilityZone:
-      type: array
-      items:
-        $ref: '#/components/schemas/AvailabilityZone'
+    BrokerStorageType:
+      type: string
+      enum:
+      - EBS
+      - EFS
+      description: <p>The broker's storage type.</p> <important><p>EFS is not supported for RabbitMQ engine type.</p></important>
     __listOfBrokerInstanceOption:
       type: array
       items:
         $ref: '#/components/schemas/BrokerInstanceOption'
-    DeploymentMode:
-      type: string
-      enum:
-      - SINGLE_INSTANCE
-      - ACTIVE_STANDBY_MULTI_AZ
-      - CLUSTER_MULTI_AZ
-      description: The broker's deployment mode.
-    ForbiddenException: {}
+    AvailabilityZone:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Id for the availability zone.
+      description: Name of the availability zone.
     DescribeBrokerInstanceOptionsResponse:
       type: object
       properties:
@@ -343,11 +301,28 @@ components:
           - xml:
               name: nextToken
             description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    DeploymentMode:
+      type: string
+      enum:
+      - SINGLE_INSTANCE
+      - ACTIVE_STANDBY_MULTI_AZ
+      - CLUSTER_MULTI_AZ
+      description: The broker's deployment mode.
+    ForbiddenException: {}
+    EngineType:
+      type: string
+      enum:
+      - ACTIVEMQ
+      - RABBITMQ
+      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
+    __string:
+      type: string
+    __listOfAvailabilityZone:
+      type: array
+      items:
+        $ref: '#/components/schemas/AvailabilityZone'
     BadRequestException: {}
-    __integerMin5Max100:
-      type: integer
-      minimum: 5
-      maximum: 100
+    InternalServerErrorException: {}
     __listOf__string:
       type: array
       items:
@@ -356,24 +331,49 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/DeploymentMode'
-    BrokerStorageType:
-      type: string
-      enum:
-      - EBS
-      - EFS
-      description: <p>The broker's storage type.</p> <important><p>EFS is not supported for RabbitMQ engine type.</p></important>
-    AvailabilityZone:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: name
-            description: Id for the availability zone.
-      description: Name of the availability zone.
-    __string:
-      type: string
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

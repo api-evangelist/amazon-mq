@@ -44,7 +44,8 @@
     "amazon-mq-openapi-original.yml: declared missing tag: Brokers",
     "amazon-mq-openapi-original.yml: declared missing tag: Configurations",
     "amazon-mq-openapi-original.yml: declared missing tag: Tags",
-    "openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0"
+    "openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "amazon-mq-broker-engine-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
