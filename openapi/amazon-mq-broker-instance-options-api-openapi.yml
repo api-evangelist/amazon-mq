@@ -216,10 +216,52 @@ paths:
       - Broker Instance Options
 components:
   schemas:
-    __integerMin5Max100:
-      type: integer
-      minimum: 5
-      maximum: 100
+    BrokerStorageType:
+      type: string
+      enum:
+      - EBS
+      - EFS
+      description: <p>The broker's storage type.</p> <important><p>EFS is not supported for RabbitMQ engine type.</p></important>
+    AvailabilityZone:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Id for the availability zone.
+      description: Name of the availability zone.
+    ForbiddenException: {}
+    DescribeBrokerInstanceOptionsResponse:
+      type: object
+      properties:
+        BrokerInstanceOptions:
+          allOf:
+          - $ref: '#/components/schemas/__listOfBrokerInstanceOption'
+          - xml:
+              name: brokerInstanceOptions
+            description: List of available broker instance options.
+        MaxResults:
+          allOf:
+          - $ref: '#/components/schemas/__integerMin5Max100'
+          - xml:
+              name: maxResults
+            description: Required. The maximum number of instance options that can be returned per page (20 by default). This value must be an integer from 5 to 100.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    __listOfAvailabilityZone:
+      type: array
+      items:
+        $ref: '#/components/schemas/AvailabilityZone'
+    __string:
+      type: string
+    BadRequestException: {}
+    InternalServerErrorException: {}
     BrokerInstanceOption:
       type: object
       properties:
@@ -260,47 +302,22 @@ components:
               name: supportedEngineVersions
             description: The list of supported engine versions.
       description: Option for host instance type.
-    BrokerStorageType:
-      type: string
-      enum:
-      - EBS
-      - EFS
-      description: <p>The broker's storage type.</p> <important><p>EFS is not supported for RabbitMQ engine type.</p></important>
+    __listOfDeploymentMode:
+      type: array
+      items:
+        $ref: '#/components/schemas/DeploymentMode'
+    __listOf__string:
+      type: array
+      items:
+        $ref: '#/components/schemas/__string'
     __listOfBrokerInstanceOption:
       type: array
       items:
         $ref: '#/components/schemas/BrokerInstanceOption'
-    AvailabilityZone:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: name
-            description: Id for the availability zone.
-      description: Name of the availability zone.
-    DescribeBrokerInstanceOptionsResponse:
-      type: object
-      properties:
-        BrokerInstanceOptions:
-          allOf:
-          - $ref: '#/components/schemas/__listOfBrokerInstanceOption'
-          - xml:
-              name: brokerInstanceOptions
-            description: List of available broker instance options.
-        MaxResults:
-          allOf:
-          - $ref: '#/components/schemas/__integerMin5Max100'
-          - xml:
-              name: maxResults
-            description: Required. The maximum number of instance options that can be returned per page (20 by default). This value must be an integer from 5 to 100.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: nextToken
-            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    __integerMin5Max100:
+      type: integer
+      minimum: 5
+      maximum: 100
     DeploymentMode:
       type: string
       enum:
@@ -308,32 +325,33 @@ components:
       - ACTIVE_STANDBY_MULTI_AZ
       - CLUSTER_MULTI_AZ
       description: The broker's deployment mode.
-    ForbiddenException: {}
     EngineType:
       type: string
       enum:
       - ACTIVEMQ
       - RABBITMQ
       description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
-    __string:
-      type: string
-    __listOfAvailabilityZone:
-      type: array
-      items:
-        $ref: '#/components/schemas/AvailabilityZone'
-    BadRequestException: {}
-    InternalServerErrorException: {}
-    __listOf__string:
-      type: array
-      items:
-        $ref: '#/components/schemas/__string'
-    __listOfDeploymentMode:
-      type: array
-      items:
-        $ref: '#/components/schemas/DeploymentMode'
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -350,26 +368,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
