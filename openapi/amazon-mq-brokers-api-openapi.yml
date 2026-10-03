@@ -1519,90 +1519,27 @@ paths:
       - Brokers
 components:
   schemas:
-    __timestampIso8601:
-      type: string
-      format: date-time
-    ConflictException: {}
-    BrokerStorageType:
-      type: string
-      enum:
-      - EBS
-      - EFS
-      description: <p>The broker's storage type.</p> <important><p>EFS is not supported for RabbitMQ engine type.</p></important>
-    DeleteBrokerResponse:
+    ActionRequired:
       type: object
       properties:
-        BrokerId:
+        ActionRequiredCode:
           allOf:
           - $ref: '#/components/schemas/__string'
           - xml:
-              name: brokerId
-            description: The unique ID that Amazon MQ generates for the broker.
-    BrokerSummary:
-      type: object
-      required:
-      - DeploymentMode
-      - EngineType
-      properties:
-        BrokerArn:
+              name: actionRequiredCode
+            description: The code you can use to resolve your broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state. You can find instructions by choosing the link for your code from the list of action required codes in <a href="https://docs.aws.amazon.com//latest/developer-guide/troubleshooting-action-required-codes.html">Amazon MQ action required codes</a>. Each code references a topic with detailed information, instructions, and recommendations for how to resolve the issue and prevent future occurrences.
+        ActionRequiredInfo:
           allOf:
           - $ref: '#/components/schemas/__string'
           - xml:
-              name: brokerArn
-            description: The broker's Amazon Resource Name (ARN).
-        BrokerId:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: brokerId
-            description: The unique ID that Amazon MQ generates for the broker.
-        BrokerName:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: brokerName
-            description: The broker's name. This value is unique in your AWS account, 1-50 characters long, and containing only letters, numbers, dashes, and underscores, and must not contain white spaces, brackets, wildcard characters, or special characters.
-        BrokerState:
-          allOf:
-          - $ref: '#/components/schemas/BrokerState'
-          - xml:
-              name: brokerState
-            description: The broker's status.
-        Created:
-          allOf:
-          - $ref: '#/components/schemas/__timestampIso8601'
-          - xml:
-              name: created
-            description: The time when the broker was created.
-        DeploymentMode:
-          allOf:
-          - $ref: '#/components/schemas/DeploymentMode'
-          - xml:
-              name: deploymentMode
-            description: The broker's deployment mode.
-        EngineType:
-          allOf:
-          - $ref: '#/components/schemas/EngineType'
-          - xml:
-              name: engineType
-            description: The type of broker engine.
-        HostInstanceType:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: hostInstanceType
-            description: The broker's instance type.
-      description: Returns information about all brokers.
-    BrokerState:
-      type: string
-      enum:
-      - CREATION_IN_PROGRESS
-      - CREATION_FAILED
-      - DELETION_IN_PROGRESS
-      - RUNNING
-      - REBOOT_IN_PROGRESS
-      - CRITICAL_ACTION_REQUIRED
-      description: The broker's status.
+              name: actionRequiredInfo
+            description: Information about the action required to resolve your broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state.
+      description: The action required to resolve a broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state.
+    InternalServerErrorException: {}
+    __listOfConfigurationId:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConfigurationId'
     LdapServerMetadataOutput:
       type: object
       required:
@@ -1674,146 +1611,22 @@ components:
               name: userSearchSubtree
             description: The directory search scope for the user. If set to true, scope is to search the entire subtree.
       description: Optional. The metadata of the LDAP server used to authenticate and authorize connections to the broker.
-    CreateUserResponse:
-      type: object
-      properties: {}
-    ForbiddenException: {}
-    ListUsersResponse:
+    Logs:
       type: object
       properties:
-        BrokerId:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: brokerId
-            description: Required. The unique ID that Amazon MQ generates for the broker.
-        MaxResults:
-          allOf:
-          - $ref: '#/components/schemas/__integerMin5Max100'
-          - xml:
-              name: maxResults
-            description: Required. The maximum number of ActiveMQ users that can be returned per page (20 by default). This value must be an integer from 5 to 100.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: nextToken
-            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
-        Users:
-          allOf:
-          - $ref: '#/components/schemas/__listOfUserSummary'
-          - xml:
-              name: users
-            description: Required. The list of all ActiveMQ usernames for the specified broker. Does not apply to RabbitMQ brokers.
-    UpdateBrokerResponse:
-      type: object
-      properties:
-        AuthenticationStrategy:
-          allOf:
-          - $ref: '#/components/schemas/AuthenticationStrategy'
-          - xml:
-              name: authenticationStrategy
-            description: Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
-        AutoMinorVersionUpgrade:
+        Audit:
           allOf:
           - $ref: '#/components/schemas/__boolean'
           - xml:
-              name: autoMinorVersionUpgrade
-            description: The new boolean value that specifies whether broker engines automatically upgrade to new minor versions as new versions are released and supported by Amazon MQ.
-        BrokerId:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: brokerId
-            description: Required. The unique ID that Amazon MQ generates for the broker.
-        Configuration:
-          allOf:
-          - $ref: '#/components/schemas/ConfigurationId'
-          - xml:
-              name: configuration
-            description: The ID of the updated configuration.
-        EngineVersion:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: engineVersion
-            description: The broker engine version to upgrade to. For a list of supported engine versions, see <a href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html">Supported engines</a>.
-        HostInstanceType:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: hostInstanceType
-            description: The broker's host instance type to upgrade to. For a list of supported instance types, see <a href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker.html#broker-instance-types">Broker instance types</a>.
-        LdapServerMetadata:
-          allOf:
-          - $ref: '#/components/schemas/LdapServerMetadataOutput'
-          - xml:
-              name: ldapServerMetadata
-            description: Optional. The metadata of the LDAP server used to authenticate and authorize connections to the broker. Does not apply to RabbitMQ brokers.
-        Logs:
-          allOf:
-          - $ref: '#/components/schemas/Logs'
-          - xml:
-              name: logs
-            description: The list of information about logs to be enabled for the specified broker.
-        MaintenanceWindowStartTime:
-          allOf:
-          - $ref: '#/components/schemas/WeeklyStartTime'
-          - xml:
-              name: maintenanceWindowStartTime
-            description: The parameters that determine the WeeklyStartTime.
-        SecurityGroups:
-          allOf:
-          - $ref: '#/components/schemas/__listOf__string'
-          - xml:
-              name: securityGroups
-            description: The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
-    UnauthorizedException: {}
-    __integer:
-      type: integer
-    UserPendingChanges:
-      type: object
-      required:
-      - PendingChange
-      properties:
-        ConsoleAccess:
+              name: audit
+            description: Enables audit logging. Every user management action made using JMX or the ActiveMQ Web Console is logged. Does not apply to RabbitMQ brokers.
+        General:
           allOf:
           - $ref: '#/components/schemas/__boolean'
           - xml:
-              name: consoleAccess
-            description: Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
-        Groups:
-          allOf:
-          - $ref: '#/components/schemas/__listOf__string'
-          - xml:
-              name: groups
-            description: The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
-        PendingChange:
-          allOf:
-          - $ref: '#/components/schemas/ChangeType'
-          - xml:
-              name: pendingChange
-            description: Required. The type of change pending for the ActiveMQ user.
-      description: Returns information about the status of the changes pending for the ActiveMQ user.
-    __listOfBrokerInstance:
-      type: array
-      items:
-        $ref: '#/components/schemas/BrokerInstance'
-    CreateBrokerResponse:
-      type: object
-      properties:
-        BrokerArn:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: brokerArn
-            description: The broker's Amazon Resource Name (ARN).
-        BrokerId:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: brokerId
-            description: The unique ID that Amazon MQ generates for the broker.
+              name: general
+            description: Enables general logging.
+      description: The list of information about logs to be enabled for the specified broker.
     DescribeBrokerResponse:
       type: object
       properties:
@@ -1991,18 +1804,316 @@ components:
           - xml:
               name: users
             description: The list of all broker usernames for the specified broker.
-    AuthenticationStrategy:
+    __integer:
+      type: integer
+    UpdateUserResponse:
+      type: object
+      properties: {}
+    User:
+      type: object
+      required:
+      - Username
+      - Password
+      properties:
+        ConsoleAccess:
+          allOf:
+          - $ref: '#/components/schemas/__boolean'
+          - xml:
+              name: consoleAccess
+            description: Enables access to the ActiveMQ Web Console for the ActiveMQ user. Does not apply to RabbitMQ brokers.
+        Groups:
+          allOf:
+          - $ref: '#/components/schemas/__listOf__string'
+          - xml:
+              name: groups
+            description: The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long. Does not apply to RabbitMQ brokers.
+        Password:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: password
+            description: Required. The password of the user. This value must be at least 12 characters long, must contain at least 4 unique characters, and must not contain commas, colons, or equal signs (,:=).
+        Username:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: username
+            description: <p>important><title>Amazon MQ for ActiveMQ</title> <para>For ActiveMQ brokers, this value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.</p>/important> <important><title>Amazon MQ for RabbitMQ</title> <p>For RabbitMQ brokers, this value can contain only alphanumeric characters, dashes, periods, underscores (- . _). This value must not contain a tilde (~) character. Amazon MQ prohibts using guest as a valid usename. This value must be 2-100 characters long.</p></important></para>
+      description: A user associated with the broker. For RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned. All subsequent broker users are created by making RabbitMQ API calls directly to brokers or via the RabbitMQ web console.
+    CreateUserResponse:
+      type: object
+      properties: {}
+    DeploymentMode:
       type: string
       enum:
-      - SIMPLE
-      - LDAP
-      description: Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
+      - SINGLE_INSTANCE
+      - ACTIVE_STANDBY_MULTI_AZ
+      - CLUSTER_MULTI_AZ
+      description: The broker's deployment mode.
+    DeleteBrokerResponse:
+      type: object
+      properties:
+        BrokerId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerId
+            description: The unique ID that Amazon MQ generates for the broker.
+    ListUsersResponse:
+      type: object
+      properties:
+        BrokerId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerId
+            description: Required. The unique ID that Amazon MQ generates for the broker.
+        MaxResults:
+          allOf:
+          - $ref: '#/components/schemas/__integerMin5Max100'
+          - xml:
+              name: maxResults
+            description: Required. The maximum number of ActiveMQ users that can be returned per page (20 by default). This value must be an integer from 5 to 100.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+        Users:
+          allOf:
+          - $ref: '#/components/schemas/__listOfUserSummary'
+          - xml:
+              name: users
+            description: Required. The list of all ActiveMQ usernames for the specified broker. Does not apply to RabbitMQ brokers.
+    __listOf__string:
+      type: array
+      items:
+        $ref: '#/components/schemas/__string'
+    BrokerInstance:
+      type: object
+      properties:
+        ConsoleURL:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: consoleURL
+            description: The brokers web console URL.
+        Endpoints:
+          allOf:
+          - $ref: '#/components/schemas/__listOf__string'
+          - xml:
+              name: endpoints
+            description: The broker's wire-level protocol endpoints.
+        IpAddress:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: ipAddress
+            description: The IP address of the Elastic Network Interface (ENI) attached to the broker. Does not apply to RabbitMQ brokers.
+      description: Returns information about all brokers.
+    EncryptionOptions:
+      type: object
+      required:
+      - UseAwsOwnedKey
+      properties:
+        KmsKeyId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: kmsKeyId
+            description: The customer master key (CMK) to use for the AWS Key Management Service (KMS). This key is used to encrypt your data at rest. If not provided, Amazon MQ will use a default CMK to encrypt your data.
+        UseAwsOwnedKey:
+          allOf:
+          - $ref: '#/components/schemas/__boolean'
+          - xml:
+              name: useAwsOwnedKey
+            description: Enables the use of an AWS owned CMK using AWS Key Management Service (KMS). Set to true by default, if no value is provided, for example, for RabbitMQ brokers.
+      description: <important><p>Does not apply to RabbitMQ brokers.</p></important> <p>Encryption options for the broker.</p>
+    BrokerState:
+      type: string
+      enum:
+      - CREATION_IN_PROGRESS
+      - CREATION_FAILED
+      - DELETION_IN_PROGRESS
+      - RUNNING
+      - REBOOT_IN_PROGRESS
+      - CRITICAL_ACTION_REQUIRED
+      description: The broker's status.
     __listOfUserSummary:
       type: array
       items:
         $ref: '#/components/schemas/UserSummary'
-    __string:
+    UpdateBrokerResponse:
+      type: object
+      properties:
+        AuthenticationStrategy:
+          allOf:
+          - $ref: '#/components/schemas/AuthenticationStrategy'
+          - xml:
+              name: authenticationStrategy
+            description: Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
+        AutoMinorVersionUpgrade:
+          allOf:
+          - $ref: '#/components/schemas/__boolean'
+          - xml:
+              name: autoMinorVersionUpgrade
+            description: The new boolean value that specifies whether broker engines automatically upgrade to new minor versions as new versions are released and supported by Amazon MQ.
+        BrokerId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerId
+            description: Required. The unique ID that Amazon MQ generates for the broker.
+        Configuration:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationId'
+          - xml:
+              name: configuration
+            description: The ID of the updated configuration.
+        EngineVersion:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: engineVersion
+            description: The broker engine version to upgrade to. For a list of supported engine versions, see <a href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker-engine.html">Supported engines</a>.
+        HostInstanceType:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: hostInstanceType
+            description: The broker's host instance type to upgrade to. For a list of supported instance types, see <a href="https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/broker.html#broker-instance-types">Broker instance types</a>.
+        LdapServerMetadata:
+          allOf:
+          - $ref: '#/components/schemas/LdapServerMetadataOutput'
+          - xml:
+              name: ldapServerMetadata
+            description: Optional. The metadata of the LDAP server used to authenticate and authorize connections to the broker. Does not apply to RabbitMQ brokers.
+        Logs:
+          allOf:
+          - $ref: '#/components/schemas/Logs'
+          - xml:
+              name: logs
+            description: The list of information about logs to be enabled for the specified broker.
+        MaintenanceWindowStartTime:
+          allOf:
+          - $ref: '#/components/schemas/WeeklyStartTime'
+          - xml:
+              name: maintenanceWindowStartTime
+            description: The parameters that determine the WeeklyStartTime.
+        SecurityGroups:
+          allOf:
+          - $ref: '#/components/schemas/__listOf__string'
+          - xml:
+              name: securityGroups
+            description: The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
+    __mapOf__string:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/__string'
+    UserSummary:
+      type: object
+      required:
+      - Username
+      properties:
+        PendingChange:
+          allOf:
+          - $ref: '#/components/schemas/ChangeType'
+          - xml:
+              name: pendingChange
+            description: The type of change pending for the broker user.
+        Username:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: username
+            description: Required. The username of the broker user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+      description: Returns a list of all broker users. Does not apply to RabbitMQ brokers.
+    BrokerSummary:
+      type: object
+      required:
+      - DeploymentMode
+      - EngineType
+      properties:
+        BrokerArn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerArn
+            description: The broker's Amazon Resource Name (ARN).
+        BrokerId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerId
+            description: The unique ID that Amazon MQ generates for the broker.
+        BrokerName:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerName
+            description: The broker's name. This value is unique in your AWS account, 1-50 characters long, and containing only letters, numbers, dashes, and underscores, and must not contain white spaces, brackets, wildcard characters, or special characters.
+        BrokerState:
+          allOf:
+          - $ref: '#/components/schemas/BrokerState'
+          - xml:
+              name: brokerState
+            description: The broker's status.
+        Created:
+          allOf:
+          - $ref: '#/components/schemas/__timestampIso8601'
+          - xml:
+              name: created
+            description: The time when the broker was created.
+        DeploymentMode:
+          allOf:
+          - $ref: '#/components/schemas/DeploymentMode'
+          - xml:
+              name: deploymentMode
+            description: The broker's deployment mode.
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - xml:
+              name: engineType
+            description: The type of broker engine.
+        HostInstanceType:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: hostInstanceType
+            description: The broker's instance type.
+      description: Returns information about all brokers.
+    Configurations:
+      type: object
+      properties:
+        Current:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationId'
+          - xml:
+              name: current
+            description: The broker's current configuration.
+        History:
+          allOf:
+          - $ref: '#/components/schemas/__listOfConfigurationId'
+          - xml:
+              name: history
+            description: The history of configurations applied to the broker.
+        Pending:
+          allOf:
+          - $ref: '#/components/schemas/ConfigurationId'
+          - xml:
+              name: pending
+            description: The broker's pending configuration.
+      description: Broker configuration information
+    __listOfActionRequired:
+      type: array
+      items:
+        $ref: '#/components/schemas/ActionRequired'
+    NotFoundException: {}
+    __timestampIso8601:
       type: string
+      format: date-time
     LogsSummary:
       type: object
       required:
@@ -2040,65 +2151,14 @@ components:
               name: pending
             description: The list of information about logs pending to be deployed for the specified broker.
       description: The list of information about logs currently enabled and pending to be deployed for the specified broker.
-    __boolean:
-      type: boolean
-    ListBrokersResponse:
-      type: object
-      properties:
-        BrokerSummaries:
-          allOf:
-          - $ref: '#/components/schemas/__listOfBrokerSummary'
-          - xml:
-              name: brokerSummaries
-            description: A list of information about all brokers.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: nextToken
-            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
-    BadRequestException: {}
-    User:
-      type: object
-      required:
-      - Username
-      - Password
-      properties:
-        ConsoleAccess:
-          allOf:
-          - $ref: '#/components/schemas/__boolean'
-          - xml:
-              name: consoleAccess
-            description: Enables access to the ActiveMQ Web Console for the ActiveMQ user. Does not apply to RabbitMQ brokers.
-        Groups:
-          allOf:
-          - $ref: '#/components/schemas/__listOf__string'
-          - xml:
-              name: groups
-            description: The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long. Does not apply to RabbitMQ brokers.
-        Password:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: password
-            description: Required. The password of the user. This value must be at least 12 characters long, must contain at least 4 unique characters, and must not contain commas, colons, or equal signs (,:=).
-        Username:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: username
-            description: <p>important><title>Amazon MQ for ActiveMQ</title> <para>For ActiveMQ brokers, this value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.</p>/important> <important><title>Amazon MQ for RabbitMQ</title> <p>For RabbitMQ brokers, this value can contain only alphanumeric characters, dashes, periods, underscores (- . _). This value must not contain a tilde (~) character. Amazon MQ prohibts using guest as a valid usename. This value must be 2-100 characters long.</p></important></para>
-      description: A user associated with the broker. For RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned. All subsequent broker users are created by making RabbitMQ API calls directly to brokers or via the RabbitMQ web console.
-    DayOfWeek:
+    ChangeType:
       type: string
       enum:
-      - MONDAY
-      - TUESDAY
-      - WEDNESDAY
-      - THURSDAY
-      - FRIDAY
-      - SATURDAY
-      - SUNDAY
+      - CREATE
+      - UPDATE
+      - DELETE
+      description: The type of change pending for the ActiveMQ user.
+    UnauthorizedException: {}
     ConfigurationId:
       type: object
       required:
@@ -2117,120 +2177,46 @@ components:
               name: revision
             description: The revision number of the configuration.
       description: <p>A list of information about the configuration.</p> <important><p>Does not apply to RabbitMQ brokers.</p></important>
-    __listOfBrokerSummary:
-      type: array
-      items:
-        $ref: '#/components/schemas/BrokerSummary'
-    BrokerInstance:
+    WeeklyStartTime:
       type: object
+      required:
+      - TimeOfDay
+      - DayOfWeek
       properties:
-        ConsoleURL:
+        DayOfWeek:
+          allOf:
+          - $ref: '#/components/schemas/DayOfWeek'
+          - xml:
+              name: dayOfWeek
+            description: Required. The day of the week.
+        TimeOfDay:
           allOf:
           - $ref: '#/components/schemas/__string'
           - xml:
-              name: consoleURL
-            description: The brokers web console URL.
-        Endpoints:
-          allOf:
-          - $ref: '#/components/schemas/__listOf__string'
-          - xml:
-              name: endpoints
-            description: The broker's wire-level protocol endpoints.
-        IpAddress:
+              name: timeOfDay
+            description: Required. The time, in 24-hour format.
+        TimeZone:
           allOf:
           - $ref: '#/components/schemas/__string'
           - xml:
-              name: ipAddress
-            description: The IP address of the Elastic Network Interface (ENI) attached to the broker. Does not apply to RabbitMQ brokers.
-      description: Returns information about all brokers.
-    Logs:
+              name: timeZone
+            description: The time zone, UTC by default, in either the Country/City format, or the UTC offset format.
+      description: The scheduled time period relative to UTC during which Amazon MQ begins to apply pending updates or patches to the broker.
+    EngineType:
+      type: string
+      enum:
+      - ACTIVEMQ
+      - RABBITMQ
+      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
+    RebootBrokerResponse:
       type: object
-      properties:
-        Audit:
-          allOf:
-          - $ref: '#/components/schemas/__boolean'
-          - xml:
-              name: audit
-            description: Enables audit logging. Every user management action made using JMX or the ActiveMQ Web Console is logged. Does not apply to RabbitMQ brokers.
-        General:
-          allOf:
-          - $ref: '#/components/schemas/__boolean'
-          - xml:
-              name: general
-            description: Enables general logging.
-      description: The list of information about logs to be enabled for the specified broker.
-    ActionRequired:
-      type: object
-      properties:
-        ActionRequiredCode:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: actionRequiredCode
-            description: The code you can use to resolve your broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state. You can find instructions by choosing the link for your code from the list of action required codes in <a href="https://docs.aws.amazon.com//latest/developer-guide/troubleshooting-action-required-codes.html">Amazon MQ action required codes</a>. Each code references a topic with detailed information, instructions, and recommendations for how to resolve the issue and prevent future occurrences.
-        ActionRequiredInfo:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: actionRequiredInfo
-            description: Information about the action required to resolve your broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state.
-      description: The action required to resolve a broker issue when the broker is in a CRITICAL_ACTION_REQUIRED state.
-    InternalServerErrorException: {}
-    __listOf__string:
-      type: array
-      items:
-        $ref: '#/components/schemas/__string'
+      properties: {}
     __integerMin5Max100:
       type: integer
       minimum: 5
       maximum: 100
-    __listOfConfigurationId:
-      type: array
-      items:
-        $ref: '#/components/schemas/ConfigurationId'
-    __mapOf__string:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/__string'
-    EncryptionOptions:
-      type: object
-      required:
-      - UseAwsOwnedKey
-      properties:
-        KmsKeyId:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: kmsKeyId
-            description: The customer master key (CMK) to use for the AWS Key Management Service (KMS). This key is used to encrypt your data at rest. If not provided, Amazon MQ will use a default CMK to encrypt your data.
-        UseAwsOwnedKey:
-          allOf:
-          - $ref: '#/components/schemas/__boolean'
-          - xml:
-              name: useAwsOwnedKey
-            description: Enables the use of an AWS owned CMK using AWS Key Management Service (KMS). Set to true by default, if no value is provided, for example, for RabbitMQ brokers.
-      description: <important><p>Does not apply to RabbitMQ brokers.</p></important> <p>Encryption options for the broker.</p>
-    DeleteUserResponse:
-      type: object
-      properties: {}
-    UserSummary:
-      type: object
-      required:
-      - Username
-      properties:
-        PendingChange:
-          allOf:
-          - $ref: '#/components/schemas/ChangeType'
-          - xml:
-              name: pendingChange
-            description: The type of change pending for the broker user.
-        Username:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: username
-            description: Required. The username of the broker user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
-      description: Returns a list of all broker users. Does not apply to RabbitMQ brokers.
+    __boolean:
+      type: boolean
     DescribeUserResponse:
       type: object
       properties:
@@ -2264,49 +2250,50 @@ components:
           - xml:
               name: username
             description: Required. The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
-    Configurations:
-      type: object
-      properties:
-        Current:
-          allOf:
-          - $ref: '#/components/schemas/ConfigurationId'
-          - xml:
-              name: current
-            description: The broker's current configuration.
-        History:
-          allOf:
-          - $ref: '#/components/schemas/__listOfConfigurationId'
-          - xml:
-              name: history
-            description: The history of configurations applied to the broker.
-        Pending:
-          allOf:
-          - $ref: '#/components/schemas/ConfigurationId'
-          - xml:
-              name: pending
-            description: The broker's pending configuration.
-      description: Broker configuration information
-    NotFoundException: {}
-    RebootBrokerResponse:
+    ForbiddenException: {}
+    DayOfWeek:
+      type: string
+      enum:
+      - MONDAY
+      - TUESDAY
+      - WEDNESDAY
+      - THURSDAY
+      - FRIDAY
+      - SATURDAY
+      - SUNDAY
+    AuthenticationStrategy:
+      type: string
+      enum:
+      - SIMPLE
+      - LDAP
+      description: Optional. The authentication strategy used to secure the broker. The default is SIMPLE.
+    DeleteUserResponse:
       type: object
       properties: {}
-    __listOfActionRequired:
-      type: array
-      items:
-        $ref: '#/components/schemas/ActionRequired'
-    DeploymentMode:
-      type: string
-      enum:
-      - SINGLE_INSTANCE
-      - ACTIVE_STANDBY_MULTI_AZ
-      - CLUSTER_MULTI_AZ
-      description: The broker's deployment mode.
-    EngineType:
-      type: string
-      enum:
-      - ACTIVEMQ
-      - RABBITMQ
-      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
+    UserPendingChanges:
+      type: object
+      required:
+      - PendingChange
+      properties:
+        ConsoleAccess:
+          allOf:
+          - $ref: '#/components/schemas/__boolean'
+          - xml:
+              name: consoleAccess
+            description: Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
+        Groups:
+          allOf:
+          - $ref: '#/components/schemas/__listOf__string'
+          - xml:
+              name: groups
+            description: The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+        PendingChange:
+          allOf:
+          - $ref: '#/components/schemas/ChangeType'
+          - xml:
+              name: pendingChange
+            description: Required. The type of change pending for the ActiveMQ user.
+      description: Returns information about the status of the changes pending for the ActiveMQ user.
     PendingLogs:
       type: object
       properties:
@@ -2323,44 +2310,57 @@ components:
               name: general
             description: Enables general logging.
       description: The list of information about logs to be enabled for the specified broker.
-    ChangeType:
+    CreateBrokerResponse:
+      type: object
+      properties:
+        BrokerArn:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerArn
+            description: The broker's Amazon Resource Name (ARN).
+        BrokerId:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: brokerId
+            description: The unique ID that Amazon MQ generates for the broker.
+    __listOfBrokerSummary:
+      type: array
+      items:
+        $ref: '#/components/schemas/BrokerSummary'
+    __listOfBrokerInstance:
+      type: array
+      items:
+        $ref: '#/components/schemas/BrokerInstance'
+    __string:
+      type: string
+    BrokerStorageType:
       type: string
       enum:
-      - CREATE
-      - UPDATE
-      - DELETE
-      description: The type of change pending for the ActiveMQ user.
-    WeeklyStartTime:
+      - EBS
+      - EFS
+      description: <p>The broker's storage type.</p> <important><p>EFS is not supported for RabbitMQ engine type.</p></important>
+    ConflictException: {}
+    ListBrokersResponse:
       type: object
-      required:
-      - TimeOfDay
-      - DayOfWeek
       properties:
-        DayOfWeek:
+        BrokerSummaries:
           allOf:
-          - $ref: '#/components/schemas/DayOfWeek'
+          - $ref: '#/components/schemas/__listOfBrokerSummary'
           - xml:
-              name: dayOfWeek
-            description: Required. The day of the week.
-        TimeOfDay:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: timeOfDay
-            description: Required. The time, in 24-hour format.
-        TimeZone:
+              name: brokerSummaries
+            description: A list of information about all brokers.
+        NextToken:
           allOf:
           - $ref: '#/components/schemas/__string'
           - xml:
-              name: timeZone
-            description: The time zone, UTC by default, in either the Country/City format, or the UTC offset format.
-      description: The scheduled time period relative to UTC during which Amazon MQ begins to apply pending updates or patches to the broker.
-    UpdateUserResponse:
-      type: object
-      properties: {}
+              name: nextToken
+            description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    BadRequestException: {}
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -2371,14 +2371,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -2389,14 +2383,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string

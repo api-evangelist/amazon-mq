@@ -203,78 +203,26 @@ paths:
       tags:
       - Broker Engine Types
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    __listOfBrokerEngineType:
-      type: array
-      items:
-        $ref: '#/components/schemas/BrokerEngineType'
     __listOfEngineVersion:
       type: array
       items:
         $ref: '#/components/schemas/EngineVersion'
     InternalServerErrorException: {}
-    ForbiddenException: {}
-    __string:
-      type: string
-    BrokerEngineType:
+    EngineVersion:
       type: object
       properties:
-        EngineType:
+        Name:
           allOf:
-          - $ref: '#/components/schemas/EngineType'
+          - $ref: '#/components/schemas/__string'
           - xml:
-              name: engineType
-            description: The broker's engine type.
-        EngineVersions:
-          allOf:
-          - $ref: '#/components/schemas/__listOfEngineVersion'
-          - xml:
-              name: engineVersions
-            description: The list of engine versions.
-      description: Types of broker engines.
+              name: name
+            description: Id for the version.
+      description: Id of the engine version.
+    __integerMin5Max100:
+      type: integer
+      minimum: 5
+      maximum: 100
     DescribeBrokerEngineTypesResponse:
       type: object
       properties:
@@ -296,27 +244,79 @@ components:
           - xml:
               name: nextToken
             description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
-    BadRequestException: {}
+    __listOfBrokerEngineType:
+      type: array
+      items:
+        $ref: '#/components/schemas/BrokerEngineType'
+    BrokerEngineType:
+      type: object
+      properties:
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - xml:
+              name: engineType
+            description: The broker's engine type.
+        EngineVersions:
+          allOf:
+          - $ref: '#/components/schemas/__listOfEngineVersion'
+          - xml:
+              name: engineVersions
+            description: The list of engine versions.
+      description: Types of broker engines.
+    ForbiddenException: {}
+    __string:
+      type: string
     EngineType:
       type: string
       enum:
       - ACTIVEMQ
       - RABBITMQ
       description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
-    __integerMin5Max100:
-      type: integer
-      minimum: 5
-      maximum: 100
-    EngineVersion:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: name
-            description: Id for the version.
-      description: Id of the engine version.
+    BadRequestException: {}
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
