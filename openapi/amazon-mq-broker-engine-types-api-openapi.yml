@@ -204,25 +204,7 @@ paths:
       - Broker Engine Types
 components:
   schemas:
-    __listOfEngineVersion:
-      type: array
-      items:
-        $ref: '#/components/schemas/EngineVersion'
-    InternalServerErrorException: {}
-    EngineVersion:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/__string'
-          - xml:
-              name: name
-            description: Id for the version.
-      description: Id of the engine version.
-    __integerMin5Max100:
-      type: integer
-      minimum: 5
-      maximum: 100
+    ForbiddenException: {}
     DescribeBrokerEngineTypesResponse:
       type: object
       properties:
@@ -244,10 +226,38 @@ components:
           - xml:
               name: nextToken
             description: The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+    BadRequestException: {}
+    __integerMin5Max100:
+      type: integer
+      minimum: 5
+      maximum: 100
+    __listOfEngineVersion:
+      type: array
+      items:
+        $ref: '#/components/schemas/EngineVersion'
     __listOfBrokerEngineType:
       type: array
       items:
         $ref: '#/components/schemas/BrokerEngineType'
+    InternalServerErrorException: {}
+    __string:
+      type: string
+    EngineType:
+      type: string
+      enum:
+      - ACTIVEMQ
+      - RABBITMQ
+      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
+    EngineVersion:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/__string'
+          - xml:
+              name: name
+            description: Id for the version.
+      description: Id of the engine version.
     BrokerEngineType:
       type: object
       properties:
@@ -264,43 +274,9 @@ components:
               name: engineVersions
             description: The list of engine versions.
       description: Types of broker engines.
-    ForbiddenException: {}
-    __string:
-      type: string
-    EngineType:
-      type: string
-      enum:
-      - ACTIVEMQ
-      - RABBITMQ
-      description: The type of broker engine. Amazon MQ supports ActiveMQ and RabbitMQ.
-    BadRequestException: {}
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -313,6 +289,30 @@ components:
       required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
