@@ -84,6 +84,8 @@ apis:
   humanURL: https://aws.amazon.com/mq/
   baseURL: http://mq.{region}.amazonaws.com
   tags:
+  - Brokerage
+  tags_raw:
   - Brokers
   properties:
   - type: OpenAPI
