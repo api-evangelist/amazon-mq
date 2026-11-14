@@ -1,7 +1,6 @@
 aid: amazon-mq
 name: Amazon MQ
-description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes
-  it easy to set up and operate message brokers in the cloud, enabling you to migrate to a message broker
+description: Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud, enabling you to migrate to a message broker
   without writing the code that typically enables interoperability with existing applications.
 type: Index
 deliveryModel:
@@ -26,12 +25,13 @@ accessModel:
   gated_source:
   - onboarding
   label: Freemium · Self-serve signup
-  confidence: medium
+  confidence: high
   source:
   - plans
   - authentication
+  - rate-limits
   - security
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-mq.png
 tags:
@@ -50,121 +50,68 @@ url: https://raw.githubusercontent.com/api-evangelist/amazon-mq/refs/heads/main/
 created: '2026-03-16'
 modified: '2026-09-16'
 specificationVersion: '0.23'
-apis:
-- aid: amazon-mq:amazon-mq-broker-engine-types-api
-  name: Amazon MQ Broker Engine Types API
-  description: The Broker Engine Types API from Amazon MQ — 1 operation(s) for broker engine types.
-  humanURL: https://aws.amazon.com/mq/
-  baseURL: http://mq.{region}.amazonaws.com
-  tags:
-  - Broker Engine Types
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-mq-broker-engine-types-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/mq/
-  - type: GettingStarted
-    url: https://aws.amazon.com/mq/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/mq/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/mq/faqs/
-- aid: amazon-mq:amazon-mq-broker-instance-options-api
-  name: Amazon MQ Broker Instance Options API
-  description: >-
-    The Broker Instance Options API from Amazon MQ — 1 operation(s) for broker instance options.
-  humanURL: https://aws.amazon.com/mq/
-  baseURL: http://mq.{region}.amazonaws.com
-  tags:
-  - Broker Instance Options
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-mq-broker-instance-options-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/mq/
-  - type: GettingStarted
-    url: https://aws.amazon.com/mq/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/mq/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/mq/faqs/
-- aid: amazon-mq:amazon-mq-brokers-api
-  name: Amazon MQ Brokers API
-  description: The Brokers API from Amazon MQ — 5 operation(s) for brokers.
-  humanURL: https://aws.amazon.com/mq/
-  baseURL: http://mq.{region}.amazonaws.com
-  tags:
-  - Brokerage
-  tags_raw:
-  - Brokers
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-mq-brokers-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/mq/
-  - type: GettingStarted
-    url: https://aws.amazon.com/mq/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/mq/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/mq/faqs/
-- aid: amazon-mq:amazon-mq-configurations-api
-  name: Amazon MQ Configurations API
-  description: The Configurations API from Amazon MQ — 4 operation(s) for configurations.
-  humanURL: https://aws.amazon.com/mq/
-  baseURL: http://mq.{region}.amazonaws.com
-  tags:
-  - Configurations
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-mq-configurations-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/mq/
-  - type: GettingStarted
-    url: https://aws.amazon.com/mq/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/mq/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/mq/faqs/
-- aid: amazon-mq:amazon-mq-tags-api
-  name: Amazon MQ Tags API
-  description: The Tags API from Amazon MQ — 2 operation(s) for tags.
-  humanURL: https://aws.amazon.com/mq/
-  baseURL: http://mq.{region}.amazonaws.com
-  tags:
-  - Tags
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-mq-tags-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/mq/
-  - type: GettingStarted
-    url: https://aws.amazon.com/mq/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/mq/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/mq/faqs/
-- aid: amazon-mq:amazon-mq-operations-api
-  name: Amazon MQ Mq Operations API
-  description: The Mq Operations API from Amazon MQ — 5 operation(s) for mq operations.
-  humanURL: https://aws.amazon.com/mq/
-  baseURL: http://mq.{region}.amazonaws.com
-  tags:
-  - Mq Operations
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-mq-operations-api-openapi.yml
-- aid: amazon-mq:amazon-mq-users-api
-  name: Amazon MQ Mq Users API
-  description: The Mq Users API from Amazon MQ — 2 operation(s) for mq users.
-  humanURL: https://aws.amazon.com/mq/
-  baseURL: http://mq.{region}.amazonaws.com
-  tags:
-  - Mq Users
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-mq-users-api-openapi.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
 common:
+- type: Spectral
+  url: rules/amazon-mq-spectral-rules.yml
+- type: Spectral
+  url: rules/amazon-mq-rules.yml
+- type: Spectral
+  url: rules/amazon-mq-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/amazon-mq-mq-api-context.jsonld
+- type: JSONLD
+  url: json-ld/amazon-mq-context.jsonld
+- type: Vocabulary
+  url: vocabulary/amazon-mq-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/amazon-mq-data-model.yml
+- type: CLI
+  url: cli/amazon-mq-cli.yml
+- type: Idempotency
+  url: conventions/amazon-mq-conventions.yml
+- type: Conventions
+  url: conventions/amazon-mq-conventions.yml
+- type: Compliance
+  url: https://aws.amazon.com/compliance/
+- type: Deprecation
+  url: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-release-notes.html
+- type: Lifecycle
+  url: lifecycle/amazon-mq-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/amazon-mq-problem-types.yml
+- type: Conformance
+  url: conformance/amazon-mq-conformance.yml
+- type: LLMsTxt
+  url: llms/amazon-mq-llms.txt
+- type: ToolCrosswalk
+  url: mcp/amazon-mq-tool-crosswalk.yml
+- type: MCPServer
+  url: mcp/amazon-mq-mcp.yml
+- type: SecurityTxt
+  url: well-known/amazon-mq-security.txt
+- type: WellKnown
+  url: well-known/amazon-mq-well-known.yml
+- type: Hosts
+  url: hosts/amazon-mq-hosts.yml
+- type: Vendors
+  url: vendors/amazon-mq-vendors.yml
+- type: SDKs
+  url: packages/amazon-mq-packages.yml
+- type: Packages
+  url: packages/amazon-mq-packages.yml
+- type: SignUp
+  url: https://signin.aws.amazon.com/signup?request_type=builderId
+- type: Security
+  url: https://aws.amazon.com/security/?nc2=h_dsc_aa_sec
+- type: Newsroom
+  url: https://aws.amazon.com/media/?nc2=h_sol_ind_med
+- type: GettingStarted
+  url: https://docs.aws.amazon.com/AmazonRDS/latest/gettingstartedguide/what-is-rds
 - type: Plans
   url: plans/amazon-mq-plans-pricing.yml
 - type: RateLimits
@@ -189,9 +136,11 @@ common:
 - type: Authentication
   url: authentication/amazon-mq-authentication.yml
 - type: Portal
-  url: https://aws.amazon.com/mq/
+  url: https://aws.amazon.com/amazon-mq/
 - type: Documentation
-  url: https://docs.aws.amazon.com/mq/
+  url: https://docs.aws.amazon.com/amazon-mq/
+- type: APIReference
+  url: https://docs.aws.amazon.com/amazon-mq/latest/api-reference/welcome.html
 - type: TermsOfService
   url: https://aws.amazon.com/service-terms/
 - type: PrivacyPolicy
@@ -199,11 +148,11 @@ common:
 - type: Support
   url: https://aws.amazon.com/premiumsupport/
 - type: Blog
-  url: https://aws.amazon.com/blogs/media/
+  url: https://aws.amazon.com/blogs/compute/category/messaging/amazon-mq/
 - type: GitHubOrganization
   url: https://github.com/aws
 - type: Console
-  url: https://console.aws.amazon.com/mq/
+  url: https://console.aws.amazon.com/amazon-mq/
 - type: Signup
   url: https://portal.aws.amazon.com/billing/signup
 - type: StatusPage
@@ -223,8 +172,7 @@ common:
   - name: High Availability
     description: Active/standby configurations with automatic failover for high availability.
   - name: Network of Brokers
-    description: Create networks of brokers for distributed messaging across regions and availability
-      zones.
+    description: Create networks of brokers for distributed messaging across regions and availability zones.
   - name: Broker Management API
     description: Programmatically create, configure, and manage brokers and configurations.
   - name: Security
@@ -253,6 +201,187 @@ common:
     description: Provision and manage brokers using CloudFormation templates.
 - type: Integrations
   url: https://aws.amazon.com/partners/
+- type: UsageTerms
+  url: terms/amazon-mq-terms-of-service.yml
+- type: Attestations
+  url: compliance/amazon-mq-compliance.yml
+apis:
+- aid: amazon-mq:amazon-mq-broker-engine-types-api
+  name: Amazon MQ Broker Engine Types API
+  description: The Broker Engine Types API from Amazon MQ — 1 operation(s) for broker engine types.
+  humanURL: https://aws.amazon.com/amazon-mq/
+  baseURL: https://mq.{region}.amazonaws.com
+  tags:
+  - Broker Engine Types
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-broker-engine-types-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/amazon-mq/
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/amazon-mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/amazon-mq/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-broker-engine-types-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-broker-engine-types-request-schema.json
+- aid: amazon-mq:amazon-mq-broker-instance-options-api
+  name: Amazon MQ Broker Instance Options API
+  description: The Broker Instance Options API from Amazon MQ — 1 operation(s) for broker instance options.
+  humanURL: https://aws.amazon.com/amazon-mq/
+  baseURL: https://mq.{region}.amazonaws.com
+  tags:
+  - Broker Instance Options
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-broker-instance-options-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/amazon-mq/
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/amazon-mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/amazon-mq/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-broker-instance-options-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-broker-instance-options-response-schema.json
+- aid: amazon-mq:amazon-mq-brokers-api
+  name: Amazon MQ Brokers API
+  description: The Brokers API from Amazon MQ — 5 operation(s) for brokers.
+  humanURL: https://aws.amazon.com/amazon-mq/
+  baseURL: https://mq.{region}.amazonaws.com
+  tags:
+  - Brokerage
+  tags_raw:
+  - Brokers
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-brokers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/amazon-mq/
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/amazon-mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/amazon-mq/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-broker-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-create-broker-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-update-broker-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-update-broker-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-brokers-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-brokers-response-schema.json
+- aid: amazon-mq:amazon-mq-configurations-api
+  name: Amazon MQ Configurations API
+  description: The Configurations API from Amazon MQ — 4 operation(s) for configurations.
+  humanURL: https://aws.amazon.com/amazon-mq/
+  baseURL: https://mq.{region}.amazonaws.com
+  tags:
+  - Configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/amazon-mq/
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/amazon-mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/amazon-mq/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-configuration-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-create-configuration-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-create-configuration-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-update-configuration-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-configurations-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-update-configuration-request-schema.json
+- aid: amazon-mq:amazon-mq-tags-api
+  name: Amazon MQ Tags API
+  description: The Tags API from Amazon MQ — 2 operation(s) for tags.
+  humanURL: https://aws.amazon.com/amazon-mq/
+  baseURL: https://mq.{region}.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/amazon-mq/
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html
+  - type: Pricing
+    url: https://aws.amazon.com/amazon-mq/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/amazon-mq/faqs/
+  - type: JSONSchema
+    url: json-schema/amazon-mq-create-tags-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-delete-tags-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-tags-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-tags-response-schema.json
+- aid: amazon-mq:amazon-mq-operations-api
+  name: Amazon MQ Mq Operations API
+  description: The Mq Operations API from Amazon MQ — 5 operation(s) for mq operations.
+  humanURL: https://aws.amazon.com/amazon-mq/
+  baseURL: https://mq.{region}.amazonaws.com
+  tags:
+  - Mq Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-operations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-configuration-revisions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-configuration-revisions-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-configuration-revision-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-shared-resources-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-shared-resources-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-promote-request-schema.json
+- aid: amazon-mq:amazon-mq-users-api
+  name: Amazon MQ Mq Users API
+  description: The Mq Users API from Amazon MQ — 2 operation(s) for mq users.
+  humanURL: https://aws.amazon.com/amazon-mq/
+  baseURL: https://mq.{region}.amazonaws.com
+  tags:
+  - Mq Users
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-mq-users-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-mq-create-user-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-update-user-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-describe-user-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-users-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-list-users-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-mq-delete-user-request-schema.json
 integrations:
 - name: Partner Programs
 - name: Resources
@@ -262,8 +391,10 @@ integrations:
 - name: AWS Partner Central
 - name: Partner Paths
 - name: co-sell with AWS
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
 x-parent: amazon-web-services
 x-relationship: product
+x-enrichment:
+  date: '2026-11-11'
+  status: enriched
+  artifacts_added: 9
+  pass: local-v6

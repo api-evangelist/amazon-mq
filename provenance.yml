@@ -11,6 +11,15 @@ artifacts:
   capabilities/amazon-mq-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
+  cli/amazon-mq-cli.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/amazon-mq-broker-engine-types-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-mq-broker-engine-types-api
@@ -47,6 +56,21 @@ artifacts:
   collections/openapi.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  compliance/amazon-mq-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
+  conformance/amazon-mq-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/amazon-mq-conventions.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/amazon-mq-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/amazon-mq-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/mq-api-action-required-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -275,16 +299,118 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-mq-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
   integrations/amazon-mq-integration-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  json-ld/amazon-mq-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
   json-ld/amazon-mq-mq-api-context.jsonld:
     method: unknown
     evidence: no authorship recorded
   json-ld/json-ld.yml:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-create-broker-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-create-configuration-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-create-configuration-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-create-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-create-user-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-delete-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-delete-user-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-broker-engine-types-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-broker-engine-types-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-broker-instance-options-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-broker-instance-options-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-broker-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-configuration-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-configuration-revision-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-shared-resources-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-shared-resources-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-describe-user-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-brokers-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-brokers-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-configuration-revisions-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-configuration-revisions-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-configurations-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-tags-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-users-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-list-users-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-promote-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-update-broker-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-update-broker-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-update-configuration-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-update-configuration-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-mq-update-user-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/json-schema.yml:
@@ -737,7 +863,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -806,20 +932,30 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/_original/amazon-mq-openapi-original.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/amazon-mq-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/amazon-mq-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-mq-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-mq-mcp.yml:
+    method: searched
+    evidence: declared in the artifact
+  mcp/amazon-mq-tool-crosswalk.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/amazon-mq-broker-engine-types-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-mq-broker-instance-options-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-mq-brokers-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
@@ -835,6 +971,12 @@ artifacts:
   openapi/amazon-mq-users-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
+  packages/amazon-mq-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  patterns/amazon-mq-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/amazon-mq-plans-pricing.yml:
     method: generated
     evidence: declared in the artifact
@@ -854,9 +996,12 @@ artifacts:
     method: derived
     evidence: openapi/amazon-mq-tags-api
   rate-limits/amazon-mq-rate-limits.yml:
-    method: generated
+    method: searched
     evidence: declared in the artifact
   rules/amazon-mq-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/amazon-mq-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-mq-spectral-rules.yml:
@@ -871,12 +1016,40 @@ artifacts:
   security/amazon-mq-vulnerability-disclosure.yml:
     method: searched
     evidence: declared in the artifact
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/amazon-mq-manage-configuration.md:
+    method: unknown
+    evidence: no authorship recorded
+  skills/amazon-mq-provision-broker.md:
+    method: unknown
+    evidence: no authorship recorded
   sla/amazon-mq-sla.yml:
     method: generated
     evidence: declared in the artifact
   smithy/mq-2017-11-27.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/mq/service/2017-11-27/mq-2017-11-27.json
+      (sha256 705b4d3b9174, fetched 2026-11-11T21:13:05+00:00)
+  terms/amazon-mq-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-mq-vendors.yml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-mq-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-mq-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-mq-midway-auth-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-mq-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-mq-well-known.yml:
     method: unknown
     evidence: no authorship recorded
